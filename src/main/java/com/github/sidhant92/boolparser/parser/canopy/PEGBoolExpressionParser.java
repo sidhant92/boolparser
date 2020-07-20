@@ -11,10 +11,10 @@ import lombok.extern.slf4j.Slf4j;
  * @since 15/07/2020
  */
 @Slf4j
-public class CanopyBoolExpressionParser implements BoolExpressionParser {
+public class PEGBoolExpressionParser implements BoolExpressionParser {
     private final Actions actionsImpl;
 
-    public CanopyBoolExpressionParser() {
+    public PEGBoolExpressionParser() {
         actionsImpl = new ActionsImpl();
     }
 
