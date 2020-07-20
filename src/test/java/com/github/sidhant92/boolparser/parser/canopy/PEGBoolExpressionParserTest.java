@@ -16,20 +16,47 @@ import com.github.sidhant92.boolparser.domain.StringToken;
  * @author sidhant.aggarwal
  * @since 19/07/2020
  */
-public class CanopyBoolExpressionParserTest {
+public class PEGBoolExpressionParserTest {
     @Test
     public void testSingleStringToken() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("name:test");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.STRING_TOKEN.name());
         verifyStringToken((StringToken) nodeOptional.get(), "name", "test");
     }
 
     @Test
+    public void testSingleStringTokenWithSingleQuotes() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:\"te\'st\"");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyStringToken((StringToken) nodeOptional.get(), "name", "te\'st");
+    }
+
+    @Test
+    public void testSingleStringTokenWithDoubleQuotes() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:'te\"st'");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyStringToken((StringToken) nodeOptional.get(), "name", "te\"st");
+    }
+
+    @Test
+    public void testSingleStringTokenWithSpace() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:\"first second\"");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyStringToken((StringToken) nodeOptional.get(), "name", "first second");
+    }
+
+    @Test
     public void testSingleIntToken() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("age=44");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age=44");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
         verifyNumericToken((NumericToken) nodeOptional.get(), "age", 44, Operator.EQUALS);
@@ -37,8 +64,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSingleDecimalToken() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("age=44.34");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age=44.34");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
         verifyNumericToken((NumericToken) nodeOptional.get(), "age", 44.34, Operator.EQUALS);
@@ -46,8 +73,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSingleIntRangeToken() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("age: 18 TO 44");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age: 18 TO 44");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_RANGE_TOKEN.name());
         verifyNumericRangeToken((NumericRangeToken) nodeOptional.get(), "age", 18, 44);
@@ -55,8 +82,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testGreaterThan() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("age > 18");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age > 18");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
         verifyNumericToken((NumericToken) nodeOptional.get(), "age", 18, Operator.GREATER_THAN);
@@ -64,8 +91,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSingleDecimalRangeToken() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("age: 18.4 TO 44.2");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age: 18.4 TO 44.2");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_RANGE_TOKEN.name());
         verifyNumericRangeToken((NumericRangeToken) nodeOptional.get(), "age", 18.4, 44.2);
@@ -73,8 +100,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSimpleOrCondition() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("name:test OR age=33");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test OR age=33");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
         final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
@@ -87,8 +114,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSimpleAndCondition() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("name:test AND age=33");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test AND age=33");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
         final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
@@ -101,8 +128,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testSimpleNotCondition() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("NOT name:test");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("NOT name:test");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
         final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
@@ -113,8 +140,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testNestedAndCondition() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("name:test OR (age=33 AND city:dummy)");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test OR (age=33 AND city:dummy)");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
         final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
@@ -132,8 +159,8 @@ public class CanopyBoolExpressionParserTest {
 
     @Test
     public void testNestedOrCondition() {
-        final CanopyBoolExpressionParser canopyBoolExpressionParser = new CanopyBoolExpressionParser();
-        final Optional<Node> nodeOptional = canopyBoolExpressionParser.parseExpression("name:test AND (age=33 OR city:dummy)");
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test AND (age=33 OR city:dummy)");
         assertTrue(nodeOptional.isPresent());
         assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
         final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();

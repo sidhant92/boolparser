@@ -129,3 +129,10 @@ class TreeNode12 extends TreeNode {
         labelled.put(Label.decimal, elements.get(10));
     }
 }
+
+class TreeNode13 extends TreeNode {
+    TreeNode13(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(6));
+    }
+}

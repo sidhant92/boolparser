@@ -15,19 +15,13 @@ import com.github.sidhant92.boolparser.parser.canopy.domain.StringNode;
 public class ActionsImpl implements Actions {
     @Override
     public TreeNode make_string_token(String input, int start, int end, List<TreeNode> elements) {
-        final StringNode stringNode = new StringNode(elements.get(2).text, elements.get(6).text);
-        if (elements.get(0).text.equals("NOT")) {
-            final BooleanNode booleanNode = new BooleanNode();
-            booleanNode.addClause(stringNode, LogicalOperationType.NOT);
-            return booleanNode;
-        } else {
-            return stringNode;
-        }
+        final StringNode stringNode = new StringNode(getCapturedString(elements.get(2).text), getCapturedString(elements.get(6).text));
+        return checkNotExpression(elements, stringNode);
     }
 
     @Override
     public TreeNode make_numeric_token(String input, int start, int end, List<TreeNode> elements) {
-        final String field = elements.get(2).text;
+        final String field = getCapturedString(elements.get(2).text);
         final String operator = elements.get(4).text;
         final String stringValue = elements.get(6).text;
         Object value;
@@ -40,18 +34,12 @@ public class ActionsImpl implements Actions {
             valueDataType = DataType.DOUBLE;
         }
         final NumericNode numericNode = new NumericNode(field, value, operator, valueDataType);
-        if (elements.get(0).text.equals("NOT")) {
-            final BooleanNode booleanNode = new BooleanNode();
-            booleanNode.addClause(numericNode, LogicalOperationType.NOT);
-            return booleanNode;
-        } else {
-            return numericNode;
-        }
+        return checkNotExpression(elements, numericNode);
     }
 
     @Override
     public TreeNode make_numeric_range_token(String input, int start, int end, List<TreeNode> elements) {
-        final String field = elements.get(2).text;
+        final String field = getCapturedString(elements.get(2).text);
         final String fromStringValue = elements.get(6).text;
         final String toStringValue = elements.get(10).text;
         Object fromValue, toValue;
@@ -71,17 +59,33 @@ public class ActionsImpl implements Actions {
             toValueDataType = DataType.DOUBLE;
         }
         final NumericRangeNode numericRangeNode = new NumericRangeNode(field, fromValue, toValue, fromValueDataType, toValueDataType);
-        if (elements.get(0).text.equals("NOT")) {
-            final BooleanNode booleanNode = new BooleanNode();
-            booleanNode.addClause(numericRangeNode, LogicalOperationType.NOT);
-            return booleanNode;
-        } else {
-            return numericRangeNode;
-        }
+        return checkNotExpression(elements, numericRangeNode);
     }
 
     public TreeNode make_primary(String input, int start, int end, List<TreeNode> elements) {
         return elements.get(1);
+    }
+
+    private TreeNode checkNotExpression(final List<TreeNode> elements, final TreeNode node) {
+        if (elements.get(0).text.equals("NOT")) {
+            final BooleanNode booleanNode = new BooleanNode();
+            booleanNode.addClause(node, LogicalOperationType.NOT);
+            return booleanNode;
+        } else {
+            return node;
+        }
+    }
+
+    private String getCapturedString(final String input) {
+        final int firstPosition = 0;
+        final int lastPosition = input.length() - 1;
+        if (firstPosition != lastPosition && input.charAt(firstPosition) == '"' && input.charAt(lastPosition) == '"') {
+            return input.substring(1, input.length() - 1);
+        } else if (firstPosition != lastPosition && input.charAt(firstPosition) == '\'' && input.charAt(lastPosition) == '\'') {
+            return input.substring(1, input.length() - 1);
+        } else {
+            return input;
+        }
     }
 
     public TreeNode make_logical_and(String input, int start, int end, List<TreeNode> elements) {
