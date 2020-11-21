@@ -31,9 +31,18 @@ public class ActionsImpl implements Actions {
             valueDataType = DataType.INTEGER;
         } else {
             value = Double.parseDouble(stringValue);
-            valueDataType = DataType.DOUBLE;
+            valueDataType = DataType.DECIMAL;
         }
         final NumericNode numericNode = new NumericNode(field, value, operator, valueDataType);
+        return checkNotExpression(elements, numericNode);
+    }
+
+    @Override
+    public TreeNode make_app_version_token(String input, int start, int end, List<TreeNode> elements) {
+        final String field = getCapturedString(elements.get(2).text);
+        final String operator = elements.get(4).text;
+        final String value = elements.get(6).text;
+        final NumericNode numericNode = new NumericNode(field, value, operator, DataType.APP_VERSION);
         return checkNotExpression(elements, numericNode);
     }
 
@@ -49,14 +58,14 @@ public class ActionsImpl implements Actions {
             fromValueDataType = DataType.INTEGER;
         } else {
             fromValue = Double.parseDouble(fromStringValue);
-            fromValueDataType = DataType.DOUBLE;
+            fromValueDataType = DataType.DECIMAL;
         }
         if (toStringValue.indexOf('.') == -1) {
             toValue = Integer.parseInt(toStringValue);
             toValueDataType = DataType.INTEGER;
         } else {
             toValue = Double.parseDouble(toStringValue);
-            toValueDataType = DataType.DOUBLE;
+            toValueDataType = DataType.DECIMAL;
         }
         final NumericRangeNode numericRangeNode = new NumericRangeNode(field, fromValue, toValue, fromValueDataType, toValueDataType);
         return checkNotExpression(elements, numericRangeNode);
