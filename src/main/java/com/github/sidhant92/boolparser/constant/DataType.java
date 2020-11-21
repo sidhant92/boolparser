@@ -7,5 +7,6 @@ package com.github.sidhant92.boolparser.constant;
 public enum DataType {
     STRING,
     INTEGER,
-    DOUBLE
+    DECIMAL,
+    APP_VERSION
 }

@@ -1,7 +1,10 @@
 package com.github.sidhant92.boolparser.parser.canopy;
 
 import java.util.Optional;
+import com.github.sidhant92.boolparser.constant.DataType;
+import com.github.sidhant92.boolparser.datatype.DataTypeFactory;
 import com.github.sidhant92.boolparser.domain.Node;
+import com.github.sidhant92.boolparser.operator.OperatorFactory;
 import com.github.sidhant92.boolparser.parser.BoolExpressionParser;
 import com.github.sidhant92.boolparser.parser.canopy.domain.BooleanNode;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +19,8 @@ public class PEGBoolExpressionParser implements BoolExpressionParser {
 
     public PEGBoolExpressionParser() {
         actionsImpl = new ActionsImpl();
+        DataTypeFactory.initialize();
+        OperatorFactory.initialize();
     }
 
     @Override
