@@ -4,6 +4,7 @@ public enum Label {
     alphanumeric,
     and,
     app_version,
+    app_version_token,
     decimal,
     logical_and,
     logical_or,
