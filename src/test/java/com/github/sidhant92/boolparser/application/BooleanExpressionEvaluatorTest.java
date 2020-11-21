@@ -272,6 +272,26 @@ public class BooleanExpressionEvaluatorTest {
     }
 
     @Test
+    public void testAppVersionGraterThan1() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("app_version", "1.0.6.15");
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("app_version > 1.0.6.14", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
+    public void testAppVersionGraterThan2() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("app_version", "1.54");
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("app_version > 1.53", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
     public void testAppVersionGraterThanEqualTo() {
         final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
         final Map<String, Object> data = new HashMap<>();
