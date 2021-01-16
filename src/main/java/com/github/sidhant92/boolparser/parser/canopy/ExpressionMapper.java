@@ -4,7 +4,6 @@ import com.github.sidhant92.boolparser.constant.LogicalOperationType;
 import com.github.sidhant92.boolparser.constant.Operator;
 import com.github.sidhant92.boolparser.domain.BoolExpression;
 import com.github.sidhant92.boolparser.domain.Node;
-import com.github.sidhant92.boolparser.domain.NumericToken;
 import com.github.sidhant92.boolparser.domain.StringToken;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericRangeNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericNode;

@@ -2321,6 +2321,374 @@ abstract class Grammar {
                                                         }
                                                         if (address0 == FAILURE) {
                                                             offset = index1;
+                                                            int index65 = offset;
+                                                            List<TreeNode> elements50 = new ArrayList<TreeNode>(9);
+                                                            TreeNode address127 = FAILURE;
+                                                            int index66 = offset;
+                                                            String chunk26 = null;
+                                                            if (offset < inputSize) {
+                                                                chunk26 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                            }
+                                                            if (chunk26 != null && chunk26.equals("NOT")) {
+                                                                address127 = new TreeNode(input.substring(offset, offset + 3), offset);
+                                                                offset = offset + 3;
+                                                            } else {
+                                                                address127 = FAILURE;
+                                                                if (offset > failure) {
+                                                                    failure = offset;
+                                                                    expected = new ArrayList<String>();
+                                                                }
+                                                                if (offset == failure) {
+                                                                    expected.add("\"NOT\"");
+                                                                }
+                                                            }
+                                                            if (address127 == FAILURE) {
+                                                                address127 = new TreeNode(input.substring(index66, index66), index66);
+                                                                offset = index66;
+                                                            }
+                                                            if (address127 != FAILURE) {
+                                                                elements50.add(0, address127);
+                                                                TreeNode address128 = FAILURE;
+                                                                int remaining38 = 0;
+                                                                int index67 = offset;
+                                                                List<TreeNode> elements51 = new ArrayList<TreeNode>();
+                                                                TreeNode address129 = new TreeNode("", -1);
+                                                                while (address129 != FAILURE) {
+                                                                    address129 = _read_ws();
+                                                                    if (address129 != FAILURE) {
+                                                                        elements51.add(address129);
+                                                                        --remaining38;
+                                                                    }
+                                                                }
+                                                                if (remaining38 <= 0) {
+                                                                    address128 = new TreeNode(input.substring(index67, offset), index67, elements51);
+                                                                    offset = offset;
+                                                                } else {
+                                                                    address128 = FAILURE;
+                                                                }
+                                                                if (address128 != FAILURE) {
+                                                                    elements50.add(1, address128);
+                                                                    TreeNode address130 = FAILURE;
+                                                                    address130 = _read_alphanumeric();
+                                                                    if (address130 != FAILURE) {
+                                                                        elements50.add(2, address130);
+                                                                        TreeNode address131 = FAILURE;
+                                                                        int remaining39 = 0;
+                                                                        int index68 = offset;
+                                                                        List<TreeNode> elements52 = new ArrayList<TreeNode>();
+                                                                        TreeNode address132 = new TreeNode("", -1);
+                                                                        while (address132 != FAILURE) {
+                                                                            address132 = _read_ws();
+                                                                            if (address132 != FAILURE) {
+                                                                                elements52.add(address132);
+                                                                                --remaining39;
+                                                                            }
+                                                                        }
+                                                                        if (remaining39 <= 0) {
+                                                                            address131 = new TreeNode(input.substring(index68, offset), index68, elements52);
+                                                                            offset = offset;
+                                                                        } else {
+                                                                            address131 = FAILURE;
+                                                                        }
+                                                                        if (address131 != FAILURE) {
+                                                                            elements50.add(3, address131);
+                                                                            TreeNode address133 = FAILURE;
+                                                                            address133 = _read_in();
+                                                                            if (address133 != FAILURE) {
+                                                                                elements50.add(4, address133);
+                                                                                TreeNode address134 = FAILURE;
+                                                                                int remaining40 = 0;
+                                                                                int index69 = offset;
+                                                                                List<TreeNode> elements53 = new ArrayList<TreeNode>();
+                                                                                TreeNode address135 = new TreeNode("", -1);
+                                                                                while (address135 != FAILURE) {
+                                                                                    address135 = _read_ws();
+                                                                                    if (address135 != FAILURE) {
+                                                                                        elements53.add(address135);
+                                                                                        --remaining40;
+                                                                                    }
+                                                                                }
+                                                                                if (remaining40 <= 0) {
+                                                                                    address134 = new TreeNode(input.substring(index69, offset), index69, elements53);
+                                                                                    offset = offset;
+                                                                                } else {
+                                                                                    address134 = FAILURE;
+                                                                                }
+                                                                                if (address134 != FAILURE) {
+                                                                                    elements50.add(5, address134);
+                                                                                    TreeNode address136 = FAILURE;
+                                                                                    String chunk27 = null;
+                                                                                    if (offset < inputSize) {
+                                                                                        chunk27 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                    }
+                                                                                    if (chunk27 != null && chunk27.equals("(")) {
+                                                                                        address136 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                        offset = offset + 1;
+                                                                                    } else {
+                                                                                        address136 = FAILURE;
+                                                                                        if (offset > failure) {
+                                                                                            failure = offset;
+                                                                                            expected = new ArrayList<String>();
+                                                                                        }
+                                                                                        if (offset == failure) {
+                                                                                            expected.add("\"(\"");
+                                                                                        }
+                                                                                    }
+                                                                                    if (address136 != FAILURE) {
+                                                                                        elements50.add(6, address136);
+                                                                                        TreeNode address137 = FAILURE;
+                                                                                        address137 = _read_number_list();
+                                                                                        if (address137 != FAILURE) {
+                                                                                            elements50.add(7, address137);
+                                                                                            TreeNode address138 = FAILURE;
+                                                                                            String chunk28 = null;
+                                                                                            if (offset < inputSize) {
+                                                                                                chunk28 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                            }
+                                                                                            if (chunk28 != null && chunk28.equals(")")) {
+                                                                                                address138 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                offset = offset + 1;
+                                                                                            } else {
+                                                                                                address138 = FAILURE;
+                                                                                                if (offset > failure) {
+                                                                                                    failure = offset;
+                                                                                                    expected = new ArrayList<String>();
+                                                                                                }
+                                                                                                if (offset == failure) {
+                                                                                                    expected.add("\")\"");
+                                                                                                }
+                                                                                            }
+                                                                                            if (address138 != FAILURE) {
+                                                                                                elements50.add(8, address138);
+                                                                                            } else {
+                                                                                                elements50 = null;
+                                                                                                offset = index65;
+                                                                                            }
+                                                                                        } else {
+                                                                                            elements50 = null;
+                                                                                            offset = index65;
+                                                                                        }
+                                                                                    } else {
+                                                                                        elements50 = null;
+                                                                                        offset = index65;
+                                                                                    }
+                                                                                } else {
+                                                                                    elements50 = null;
+                                                                                    offset = index65;
+                                                                                }
+                                                                            } else {
+                                                                                elements50 = null;
+                                                                                offset = index65;
+                                                                            }
+                                                                        } else {
+                                                                            elements50 = null;
+                                                                            offset = index65;
+                                                                        }
+                                                                    } else {
+                                                                        elements50 = null;
+                                                                        offset = index65;
+                                                                    }
+                                                                } else {
+                                                                    elements50 = null;
+                                                                    offset = index65;
+                                                                }
+                                                            } else {
+                                                                elements50 = null;
+                                                                offset = index65;
+                                                            }
+                                                            if (elements50 == null) {
+                                                                address0 = FAILURE;
+                                                            } else {
+                                                                address0 = actions.make_decimal_list(input, index65, offset, elements50);
+                                                                offset = offset;
+                                                            }
+                                                            if (address0 == FAILURE) {
+                                                                offset = index1;
+                                                                int index70 = offset;
+                                                                List<TreeNode> elements54 = new ArrayList<TreeNode>(9);
+                                                                TreeNode address139 = FAILURE;
+                                                                int index71 = offset;
+                                                                String chunk29 = null;
+                                                                if (offset < inputSize) {
+                                                                    chunk29 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                                }
+                                                                if (chunk29 != null && chunk29.equals("NOT")) {
+                                                                    address139 = new TreeNode(input.substring(offset, offset + 3), offset);
+                                                                    offset = offset + 3;
+                                                                } else {
+                                                                    address139 = FAILURE;
+                                                                    if (offset > failure) {
+                                                                        failure = offset;
+                                                                        expected = new ArrayList<String>();
+                                                                    }
+                                                                    if (offset == failure) {
+                                                                        expected.add("\"NOT\"");
+                                                                    }
+                                                                }
+                                                                if (address139 == FAILURE) {
+                                                                    address139 = new TreeNode(input.substring(index71, index71), index71);
+                                                                    offset = index71;
+                                                                }
+                                                                if (address139 != FAILURE) {
+                                                                    elements54.add(0, address139);
+                                                                    TreeNode address140 = FAILURE;
+                                                                    int remaining41 = 0;
+                                                                    int index72 = offset;
+                                                                    List<TreeNode> elements55 = new ArrayList<TreeNode>();
+                                                                    TreeNode address141 = new TreeNode("", -1);
+                                                                    while (address141 != FAILURE) {
+                                                                        address141 = _read_ws();
+                                                                        if (address141 != FAILURE) {
+                                                                            elements55.add(address141);
+                                                                            --remaining41;
+                                                                        }
+                                                                    }
+                                                                    if (remaining41 <= 0) {
+                                                                        address140 = new TreeNode(input.substring(index72, offset), index72, elements55);
+                                                                        offset = offset;
+                                                                    } else {
+                                                                        address140 = FAILURE;
+                                                                    }
+                                                                    if (address140 != FAILURE) {
+                                                                        elements54.add(1, address140);
+                                                                        TreeNode address142 = FAILURE;
+                                                                        address142 = _read_alphanumeric();
+                                                                        if (address142 != FAILURE) {
+                                                                            elements54.add(2, address142);
+                                                                            TreeNode address143 = FAILURE;
+                                                                            int remaining42 = 0;
+                                                                            int index73 = offset;
+                                                                            List<TreeNode> elements56 = new ArrayList<TreeNode>();
+                                                                            TreeNode address144 = new TreeNode("", -1);
+                                                                            while (address144 != FAILURE) {
+                                                                                address144 = _read_ws();
+                                                                                if (address144 != FAILURE) {
+                                                                                    elements56.add(address144);
+                                                                                    --remaining42;
+                                                                                }
+                                                                            }
+                                                                            if (remaining42 <= 0) {
+                                                                                address143 = new TreeNode(input.substring(index73, offset), index73, elements56);
+                                                                                offset = offset;
+                                                                            } else {
+                                                                                address143 = FAILURE;
+                                                                            }
+                                                                            if (address143 != FAILURE) {
+                                                                                elements54.add(3, address143);
+                                                                                TreeNode address145 = FAILURE;
+                                                                                address145 = _read_in();
+                                                                                if (address145 != FAILURE) {
+                                                                                    elements54.add(4, address145);
+                                                                                    TreeNode address146 = FAILURE;
+                                                                                    int remaining43 = 0;
+                                                                                    int index74 = offset;
+                                                                                    List<TreeNode> elements57 = new ArrayList<TreeNode>();
+                                                                                    TreeNode address147 = new TreeNode("", -1);
+                                                                                    while (address147 != FAILURE) {
+                                                                                        address147 = _read_ws();
+                                                                                        if (address147 != FAILURE) {
+                                                                                            elements57.add(address147);
+                                                                                            --remaining43;
+                                                                                        }
+                                                                                    }
+                                                                                    if (remaining43 <= 0) {
+                                                                                        address146 = new TreeNode(input.substring(index74, offset), index74, elements57);
+                                                                                        offset = offset;
+                                                                                    } else {
+                                                                                        address146 = FAILURE;
+                                                                                    }
+                                                                                    if (address146 != FAILURE) {
+                                                                                        elements54.add(5, address146);
+                                                                                        TreeNode address148 = FAILURE;
+                                                                                        String chunk30 = null;
+                                                                                        if (offset < inputSize) {
+                                                                                            chunk30 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                        }
+                                                                                        if (chunk30 != null && chunk30.equals("(")) {
+                                                                                            address148 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                            offset = offset + 1;
+                                                                                        } else {
+                                                                                            address148 = FAILURE;
+                                                                                            if (offset > failure) {
+                                                                                                failure = offset;
+                                                                                                expected = new ArrayList<String>();
+                                                                                            }
+                                                                                            if (offset == failure) {
+                                                                                                expected.add("\"(\"");
+                                                                                            }
+                                                                                        }
+                                                                                        if (address148 != FAILURE) {
+                                                                                            elements54.add(6, address148);
+                                                                                            TreeNode address149 = FAILURE;
+                                                                                            address149 = _read_string_list();
+                                                                                            if (address149 != FAILURE) {
+                                                                                                elements54.add(7, address149);
+                                                                                                TreeNode address150 = FAILURE;
+                                                                                                String chunk31 = null;
+                                                                                                if (offset < inputSize) {
+                                                                                                    chunk31 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                                }
+                                                                                                if (chunk31 != null && chunk31.equals(")")) {
+                                                                                                    address150 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                    offset = offset + 1;
+                                                                                                } else {
+                                                                                                    address150 = FAILURE;
+                                                                                                    if (offset > failure) {
+                                                                                                        failure = offset;
+                                                                                                        expected = new ArrayList<String>();
+                                                                                                    }
+                                                                                                    if (offset == failure) {
+                                                                                                        expected.add("\")\"");
+                                                                                                    }
+                                                                                                }
+                                                                                                if (address150 != FAILURE) {
+                                                                                                    elements54.add(8, address150);
+                                                                                                } else {
+                                                                                                    elements54 = null;
+                                                                                                    offset = index70;
+                                                                                                }
+                                                                                            } else {
+                                                                                                elements54 = null;
+                                                                                                offset = index70;
+                                                                                            }
+                                                                                        } else {
+                                                                                            elements54 = null;
+                                                                                            offset = index70;
+                                                                                        }
+                                                                                    } else {
+                                                                                        elements54 = null;
+                                                                                        offset = index70;
+                                                                                    }
+                                                                                } else {
+                                                                                    elements54 = null;
+                                                                                    offset = index70;
+                                                                                }
+                                                                            } else {
+                                                                                elements54 = null;
+                                                                                offset = index70;
+                                                                            }
+                                                                        } else {
+                                                                            elements54 = null;
+                                                                            offset = index70;
+                                                                        }
+                                                                    } else {
+                                                                        elements54 = null;
+                                                                        offset = index70;
+                                                                    }
+                                                                } else {
+                                                                    elements54 = null;
+                                                                    offset = index70;
+                                                                }
+                                                                if (elements54 == null) {
+                                                                    address0 = FAILURE;
+                                                                } else {
+                                                                    address0 = actions.make_string_list(input, index70, offset, elements54);
+                                                                    offset = offset;
+                                                                }
+                                                                if (address0 == FAILURE) {
+                                                                    offset = index1;
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -2332,6 +2700,426 @@ abstract class Grammar {
                         }
                     }
                 }
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
+    TreeNode _read_number_list() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.number_list);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.number_list, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            int index1 = offset;
+            List<TreeNode> elements0 = new ArrayList<TreeNode>(4);
+            TreeNode address1 = FAILURE;
+            int remaining0 = 0;
+            int index2 = offset;
+            List<TreeNode> elements1 = new ArrayList<TreeNode>();
+            TreeNode address2 = new TreeNode("", -1);
+            while (address2 != FAILURE) {
+                address2 = _read_ws();
+                if (address2 != FAILURE) {
+                    elements1.add(address2);
+                    --remaining0;
+                }
+            }
+            if (remaining0 <= 0) {
+                address1 = new TreeNode(input.substring(index2, offset), index2, elements1);
+                offset = offset;
+            } else {
+                address1 = FAILURE;
+            }
+            if (address1 != FAILURE) {
+                elements0.add(0, address1);
+                TreeNode address3 = FAILURE;
+                address3 = _read_decimal();
+                if (address3 != FAILURE) {
+                    elements0.add(1, address3);
+                    TreeNode address4 = FAILURE;
+                    int remaining1 = 0;
+                    int index3 = offset;
+                    List<TreeNode> elements2 = new ArrayList<TreeNode>();
+                    TreeNode address5 = new TreeNode("", -1);
+                    while (address5 != FAILURE) {
+                        address5 = _read_ws();
+                        if (address5 != FAILURE) {
+                            elements2.add(address5);
+                            --remaining1;
+                        }
+                    }
+                    if (remaining1 <= 0) {
+                        address4 = new TreeNode(input.substring(index3, offset), index3, elements2);
+                        offset = offset;
+                    } else {
+                        address4 = FAILURE;
+                    }
+                    if (address4 != FAILURE) {
+                        elements0.add(2, address4);
+                        TreeNode address6 = FAILURE;
+                        int remaining2 = 0;
+                        int index4 = offset;
+                        List<TreeNode> elements3 = new ArrayList<TreeNode>();
+                        TreeNode address7 = new TreeNode("", -1);
+                        while (address7 != FAILURE) {
+                            address7 = _read_number_list_token();
+                            if (address7 != FAILURE) {
+                                elements3.add(address7);
+                                --remaining2;
+                            }
+                        }
+                        if (remaining2 <= 0) {
+                            address6 = new TreeNode(input.substring(index4, offset), index4, elements3);
+                            offset = offset;
+                        } else {
+                            address6 = FAILURE;
+                        }
+                        if (address6 != FAILURE) {
+                            elements0.add(3, address6);
+                        } else {
+                            elements0 = null;
+                            offset = index1;
+                        }
+                    } else {
+                        elements0 = null;
+                        offset = index1;
+                    }
+                } else {
+                    elements0 = null;
+                    offset = index1;
+                }
+            } else {
+                elements0 = null;
+                offset = index1;
+            }
+            if (elements0 == null) {
+                address0 = FAILURE;
+            } else {
+                address0 = new TreeNode20(input.substring(index1, offset), index1, elements0);
+                offset = offset;
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
+    TreeNode _read_number_list_token() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.number_list_token);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.number_list_token, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            int index1 = offset;
+            List<TreeNode> elements0 = new ArrayList<TreeNode>(4);
+            TreeNode address1 = FAILURE;
+            String chunk0 = null;
+            if (offset < inputSize) {
+                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+            }
+            if (chunk0 != null && chunk0.equals(",")) {
+                address1 = new TreeNode(input.substring(offset, offset + 1), offset);
+                offset = offset + 1;
+            } else {
+                address1 = FAILURE;
+                if (offset > failure) {
+                    failure = offset;
+                    expected = new ArrayList<String>();
+                }
+                if (offset == failure) {
+                    expected.add("\",\"");
+                }
+            }
+            if (address1 != FAILURE) {
+                elements0.add(0, address1);
+                TreeNode address2 = FAILURE;
+                int remaining0 = 0;
+                int index2 = offset;
+                List<TreeNode> elements1 = new ArrayList<TreeNode>();
+                TreeNode address3 = new TreeNode("", -1);
+                while (address3 != FAILURE) {
+                    address3 = _read_ws();
+                    if (address3 != FAILURE) {
+                        elements1.add(address3);
+                        --remaining0;
+                    }
+                }
+                if (remaining0 <= 0) {
+                    address2 = new TreeNode(input.substring(index2, offset), index2, elements1);
+                    offset = offset;
+                } else {
+                    address2 = FAILURE;
+                }
+                if (address2 != FAILURE) {
+                    elements0.add(1, address2);
+                    TreeNode address4 = FAILURE;
+                    address4 = _read_decimal();
+                    if (address4 != FAILURE) {
+                        elements0.add(2, address4);
+                        TreeNode address5 = FAILURE;
+                        int remaining1 = 0;
+                        int index3 = offset;
+                        List<TreeNode> elements2 = new ArrayList<TreeNode>();
+                        TreeNode address6 = new TreeNode("", -1);
+                        while (address6 != FAILURE) {
+                            address6 = _read_ws();
+                            if (address6 != FAILURE) {
+                                elements2.add(address6);
+                                --remaining1;
+                            }
+                        }
+                        if (remaining1 <= 0) {
+                            address5 = new TreeNode(input.substring(index3, offset), index3, elements2);
+                            offset = offset;
+                        } else {
+                            address5 = FAILURE;
+                        }
+                        if (address5 != FAILURE) {
+                            elements0.add(3, address5);
+                        } else {
+                            elements0 = null;
+                            offset = index1;
+                        }
+                    } else {
+                        elements0 = null;
+                        offset = index1;
+                    }
+                } else {
+                    elements0 = null;
+                    offset = index1;
+                }
+            } else {
+                elements0 = null;
+                offset = index1;
+            }
+            if (elements0 == null) {
+                address0 = FAILURE;
+            } else {
+                address0 = new TreeNode21(input.substring(index1, offset), index1, elements0);
+                offset = offset;
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
+    TreeNode _read_string_list() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.string_list);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.string_list, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            int index1 = offset;
+            List<TreeNode> elements0 = new ArrayList<TreeNode>(4);
+            TreeNode address1 = FAILURE;
+            int remaining0 = 0;
+            int index2 = offset;
+            List<TreeNode> elements1 = new ArrayList<TreeNode>();
+            TreeNode address2 = new TreeNode("", -1);
+            while (address2 != FAILURE) {
+                address2 = _read_ws();
+                if (address2 != FAILURE) {
+                    elements1.add(address2);
+                    --remaining0;
+                }
+            }
+            if (remaining0 <= 0) {
+                address1 = new TreeNode(input.substring(index2, offset), index2, elements1);
+                offset = offset;
+            } else {
+                address1 = FAILURE;
+            }
+            if (address1 != FAILURE) {
+                elements0.add(0, address1);
+                TreeNode address3 = FAILURE;
+                address3 = _read_alphanumeric();
+                if (address3 != FAILURE) {
+                    elements0.add(1, address3);
+                    TreeNode address4 = FAILURE;
+                    int remaining1 = 0;
+                    int index3 = offset;
+                    List<TreeNode> elements2 = new ArrayList<TreeNode>();
+                    TreeNode address5 = new TreeNode("", -1);
+                    while (address5 != FAILURE) {
+                        address5 = _read_ws();
+                        if (address5 != FAILURE) {
+                            elements2.add(address5);
+                            --remaining1;
+                        }
+                    }
+                    if (remaining1 <= 0) {
+                        address4 = new TreeNode(input.substring(index3, offset), index3, elements2);
+                        offset = offset;
+                    } else {
+                        address4 = FAILURE;
+                    }
+                    if (address4 != FAILURE) {
+                        elements0.add(2, address4);
+                        TreeNode address6 = FAILURE;
+                        int remaining2 = 0;
+                        int index4 = offset;
+                        List<TreeNode> elements3 = new ArrayList<TreeNode>();
+                        TreeNode address7 = new TreeNode("", -1);
+                        while (address7 != FAILURE) {
+                            address7 = _read_string_list_token();
+                            if (address7 != FAILURE) {
+                                elements3.add(address7);
+                                --remaining2;
+                            }
+                        }
+                        if (remaining2 <= 0) {
+                            address6 = new TreeNode(input.substring(index4, offset), index4, elements3);
+                            offset = offset;
+                        } else {
+                            address6 = FAILURE;
+                        }
+                        if (address6 != FAILURE) {
+                            elements0.add(3, address6);
+                        } else {
+                            elements0 = null;
+                            offset = index1;
+                        }
+                    } else {
+                        elements0 = null;
+                        offset = index1;
+                    }
+                } else {
+                    elements0 = null;
+                    offset = index1;
+                }
+            } else {
+                elements0 = null;
+                offset = index1;
+            }
+            if (elements0 == null) {
+                address0 = FAILURE;
+            } else {
+                address0 = new TreeNode22(input.substring(index1, offset), index1, elements0);
+                offset = offset;
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
+    TreeNode _read_string_list_token() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.string_list_token);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.string_list_token, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            int index1 = offset;
+            List<TreeNode> elements0 = new ArrayList<TreeNode>(4);
+            TreeNode address1 = FAILURE;
+            String chunk0 = null;
+            if (offset < inputSize) {
+                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+            }
+            if (chunk0 != null && chunk0.equals(",")) {
+                address1 = new TreeNode(input.substring(offset, offset + 1), offset);
+                offset = offset + 1;
+            } else {
+                address1 = FAILURE;
+                if (offset > failure) {
+                    failure = offset;
+                    expected = new ArrayList<String>();
+                }
+                if (offset == failure) {
+                    expected.add("\",\"");
+                }
+            }
+            if (address1 != FAILURE) {
+                elements0.add(0, address1);
+                TreeNode address2 = FAILURE;
+                int remaining0 = 0;
+                int index2 = offset;
+                List<TreeNode> elements1 = new ArrayList<TreeNode>();
+                TreeNode address3 = new TreeNode("", -1);
+                while (address3 != FAILURE) {
+                    address3 = _read_ws();
+                    if (address3 != FAILURE) {
+                        elements1.add(address3);
+                        --remaining0;
+                    }
+                }
+                if (remaining0 <= 0) {
+                    address2 = new TreeNode(input.substring(index2, offset), index2, elements1);
+                    offset = offset;
+                } else {
+                    address2 = FAILURE;
+                }
+                if (address2 != FAILURE) {
+                    elements0.add(1, address2);
+                    TreeNode address4 = FAILURE;
+                    address4 = _read_alphanumeric();
+                    if (address4 != FAILURE) {
+                        elements0.add(2, address4);
+                        TreeNode address5 = FAILURE;
+                        int remaining1 = 0;
+                        int index3 = offset;
+                        List<TreeNode> elements2 = new ArrayList<TreeNode>();
+                        TreeNode address6 = new TreeNode("", -1);
+                        while (address6 != FAILURE) {
+                            address6 = _read_ws();
+                            if (address6 != FAILURE) {
+                                elements2.add(address6);
+                                --remaining1;
+                            }
+                        }
+                        if (remaining1 <= 0) {
+                            address5 = new TreeNode(input.substring(index3, offset), index3, elements2);
+                            offset = offset;
+                        } else {
+                            address5 = FAILURE;
+                        }
+                        if (address5 != FAILURE) {
+                            elements0.add(3, address5);
+                        } else {
+                            elements0 = null;
+                            offset = index1;
+                        }
+                    } else {
+                        elements0 = null;
+                        offset = index1;
+                    }
+                } else {
+                    elements0 = null;
+                    offset = index1;
+                }
+            } else {
+                elements0 = null;
+                offset = index1;
+            }
+            if (elements0 == null) {
+                address0 = FAILURE;
+            } else {
+                address0 = new TreeNode23(input.substring(index1, offset), index1, elements0);
+                offset = offset;
             }
             rule.put(index0, new CacheRecord(address0, offset));
         }
@@ -3357,6 +4145,64 @@ abstract class Grammar {
                             }
                         }
                     }
+                }
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
+    TreeNode _read_in() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.in);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.in, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            int index1 = offset;
+            String chunk0 = null;
+            if (offset < inputSize) {
+                chunk0 = input.substring(offset, Math.min(offset + 2, input.length()));
+            }
+            if (chunk0 != null && chunk0.equals("IN")) {
+                address0 = new TreeNode(input.substring(offset, offset + 2), offset);
+                offset = offset + 2;
+            } else {
+                address0 = FAILURE;
+                if (offset > failure) {
+                    failure = offset;
+                    expected = new ArrayList<String>();
+                }
+                if (offset == failure) {
+                    expected.add("\"IN\"");
+                }
+            }
+            if (address0 == FAILURE) {
+                offset = index1;
+                String chunk1 = null;
+                if (offset < inputSize) {
+                    chunk1 = input.substring(offset, Math.min(offset + 2, input.length()));
+                }
+                if (chunk1 != null && chunk1.equals("in")) {
+                    address0 = new TreeNode(input.substring(offset, offset + 2), offset);
+                    offset = offset + 2;
+                } else {
+                    address0 = FAILURE;
+                    if (offset > failure) {
+                        failure = offset;
+                        expected = new ArrayList<String>();
+                    }
+                    if (offset == failure) {
+                        expected.add("\"in\"");
+                    }
+                }
+                if (address0 == FAILURE) {
+                    offset = index1;
                 }
             }
             rule.put(index0, new CacheRecord(address0, offset));

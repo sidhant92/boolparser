@@ -176,6 +176,36 @@ public class PEGBoolExpressionParserTest {
         verifyStringToken((StringToken) nestedBooleanExpression.getOrOperations().get(1), "city", "dummy");
     }
 
+    @Test
+    public void testIntegerList() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age IN (12,45)");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
+        final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
+        assertEquals(boolExpression.getOrOperations().size(), 2);
+        assertEquals(boolExpression.getOrOperations().get(0).getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
+        assertEquals(boolExpression.getOrOperations().get(1).getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
+        verifyNumericToken((NumericToken) boolExpression.getOrOperations().get(0), "age", 12, Operator.EQUALS);
+        verifyNumericToken((NumericToken) boolExpression.getOrOperations().get(1), "age", 45, Operator.EQUALS);
+    }
+
+    @Test
+    public void testStringList() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name IN (abc, def, 'abc def')");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
+        final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
+        assertEquals(boolExpression.getOrOperations().size(), 3);
+        assertEquals(boolExpression.getOrOperations().get(0).getNodeType().name(), NodeType.STRING_TOKEN.name());
+        assertEquals(boolExpression.getOrOperations().get(1).getNodeType().name(), NodeType.STRING_TOKEN.name());
+        assertEquals(boolExpression.getOrOperations().get(2).getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyStringToken((StringToken) boolExpression.getOrOperations().get(0), "name", "abc");
+        verifyStringToken((StringToken) boolExpression.getOrOperations().get(1), "name", "def");
+        verifyStringToken((StringToken) boolExpression.getOrOperations().get(2), "name", "abc def");
+    }
+
     private void verifyStringToken(final StringToken stringToken, final String field, final String value) {
         assertEquals(stringToken.getNodeType().name(), NodeType.STRING_TOKEN.name());
         assertEquals(stringToken.getField(), field);

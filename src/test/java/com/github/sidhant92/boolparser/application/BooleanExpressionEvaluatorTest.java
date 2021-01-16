@@ -209,6 +209,56 @@ public class BooleanExpressionEvaluatorTest {
     }
 
     @Test
+    public void testNegativeInClauseForIntegers() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("age", 25);
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("age in (26,56,34)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertFalse(booleanOptional.get());
+    }
+
+    @Test
+    public void testPositiveInClauseForIntegers() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("age", 25);
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("age in (26,25,34)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
+    public void testPositiveInClauseForDecimals() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("num", 25.3);
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("num in (26,25,34, 25.3)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
+    public void testNegativeInClauseForStrings() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("name", "test");
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("name in (tes, abc)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertFalse(booleanOptional.get());
+    }
+
+    @Test
+    public void testPositiveInClauseForStrings() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("name", "test");
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("name in (abc, test)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
     public void testCorrectComplexExpressionWithParenthesis1() {
         final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
         final Map<String, Object> data = new HashMap<>();
