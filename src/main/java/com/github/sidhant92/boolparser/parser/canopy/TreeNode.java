@@ -168,3 +168,49 @@ class TreeNode17 extends TreeNode {
         labelled.put(Label.alphanumeric, elements.get(6));
     }
 }
+
+class TreeNode18 extends TreeNode {
+    TreeNode18(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(2));
+        labelled.put(Label.in, elements.get(4));
+        labelled.put(Label.number_list, elements.get(7));
+    }
+}
+
+class TreeNode19 extends TreeNode {
+    TreeNode19(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(2));
+        labelled.put(Label.in, elements.get(4));
+        labelled.put(Label.string_list, elements.get(7));
+    }
+}
+
+class TreeNode20 extends TreeNode {
+    TreeNode20(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.decimal, elements.get(1));
+    }
+}
+
+class TreeNode21 extends TreeNode {
+    TreeNode21(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.decimal, elements.get(2));
+    }
+}
+
+class TreeNode22 extends TreeNode {
+    TreeNode22(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(1));
+    }
+}
+
+class TreeNode23 extends TreeNode {
+    TreeNode23(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(2));
+    }
+}
