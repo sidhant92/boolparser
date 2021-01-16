@@ -1,6 +1,8 @@
 package com.github.sidhant92.boolparser.parser.canopy;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import com.github.sidhant92.boolparser.constant.DataType;
 import com.github.sidhant92.boolparser.constant.LogicalOperationType;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericRangeNode;
@@ -125,5 +127,43 @@ public class ActionsImpl implements Actions {
         } else {
             return booleanNode;
         }
+    }
+
+    public TreeNode make_decimal_list(String input, int start, int end, List<TreeNode> elements) {
+        final BooleanNode booleanNode = new BooleanNode();
+        final List<String> list = Arrays.stream(elements.get(7).text.split(",")).map(String::trim).collect(Collectors.toList());
+        final DataType dataType = findNumericDataTypeForList(list);
+        final List<TreeNode> nodes = list.stream().map(data -> new NumericNode(elements.get(2).text, getValue(data, dataType), "=", dataType))
+                                         .collect(Collectors.toList());
+        nodes.forEach(a -> booleanNode.addClause(a, LogicalOperationType.OR));
+        return checkNotExpression(elements, booleanNode);
+    }
+
+    private DataType findNumericDataTypeForList(final List<String> list) {
+        DataType dataType = DataType.INTEGER;
+        if (list.stream().anyMatch(a -> a.indexOf('.') != -1)) {
+            dataType = DataType.DECIMAL;
+        }
+        return dataType;
+    }
+
+    private Object getValue(final String value, final DataType dataType) {
+        switch (dataType) {
+            case INTEGER:
+                return Integer.parseInt(value);
+            case DECIMAL:
+                return Double.parseDouble(value);
+            default:
+                return value;
+        }
+    }
+
+    public TreeNode make_string_list(String input, int start, int end, List<TreeNode> elements) {
+        final BooleanNode booleanNode = new BooleanNode();
+        final List<String> list = Arrays.stream(elements.get(7).text.split(",")).map(String::trim).map(element -> element.replace("'", ""))
+                                        .collect(Collectors.toList());
+        final List<TreeNode> nodes = list.stream().map(data -> new StringNode(elements.get(2).text, data)).collect(Collectors.toList());
+        nodes.forEach(a -> booleanNode.addClause(a, LogicalOperationType.OR));
+        return checkNotExpression(elements, booleanNode);
     }
 }
