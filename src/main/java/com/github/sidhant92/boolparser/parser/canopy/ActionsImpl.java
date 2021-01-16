@@ -136,7 +136,7 @@ public class ActionsImpl implements Actions {
         final List<TreeNode> nodes = list.stream().map(data -> new NumericNode(elements.get(2).text, getValue(data, dataType), "=", dataType))
                                          .collect(Collectors.toList());
         nodes.forEach(a -> booleanNode.addClause(a, LogicalOperationType.OR));
-        return booleanNode;
+        return checkNotExpression(elements, booleanNode);
     }
 
     private DataType findNumericDataTypeForList(final List<String> list) {
@@ -164,6 +164,6 @@ public class ActionsImpl implements Actions {
                                         .collect(Collectors.toList());
         final List<TreeNode> nodes = list.stream().map(data -> new StringNode(elements.get(2).text, data)).collect(Collectors.toList());
         nodes.forEach(a -> booleanNode.addClause(a, LogicalOperationType.OR));
-        return booleanNode;
+        return checkNotExpression(elements, booleanNode);
     }
 }
