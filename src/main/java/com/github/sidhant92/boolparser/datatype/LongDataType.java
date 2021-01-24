@@ -6,19 +6,19 @@ import com.github.sidhant92.boolparser.constant.DataType;
 
 /**
  * @author sidhant.aggarwal
- * @since 23/07/2020
+ * @since 24/01/2021
  */
-public class IntegerDataType extends AbstractDataType<Integer> {
+public class LongDataType extends AbstractDataType<Long> {
     private ObjectMapper objectMapper;
 
-    public IntegerDataType(final ObjectMapper objectMapper) {
-        super(Integer.class);
+    public LongDataType(final ObjectMapper objectMapper) {
+        super(Long.class);
         this.objectMapper = objectMapper;
     }
 
     @Override
     public DataType getDataType() {
-        return DataType.INTEGER;
+        return DataType.LONG;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class IntegerDataType extends AbstractDataType<Integer> {
     }
 
     @Override
-    public Optional<Integer> getValue(Object value) {
+    public Optional<Long> getValue(Object value) {
         return defaultGetValue(value, objectMapper);
     }
 }

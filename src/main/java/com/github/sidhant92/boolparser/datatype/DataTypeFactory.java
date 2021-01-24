@@ -21,6 +21,7 @@ public class DataTypeFactory {
         abstractDataTypeMap.put(DataType.STRING, new StringDataType(objectMapper));
         abstractDataTypeMap.put(DataType.INTEGER, new IntegerDataType(objectMapper));
         abstractDataTypeMap.put(DataType.DECIMAL, new DecimalDataType(objectMapper));
+        abstractDataTypeMap.put(DataType.LONG, new LongDataType(objectMapper));
         abstractDataTypeMap.put(DataType.APP_VERSION, new AppVersionDataType(objectMapper));
     }
 
