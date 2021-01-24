@@ -63,6 +63,15 @@ public class PEGBoolExpressionParserTest {
     }
 
     @Test
+    public void testSingleLongToken() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age=1611473334114");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
+        verifyNumericToken((NumericToken) nodeOptional.get(), "age", 1611473334114L, Operator.EQUALS);
+    }
+
+    @Test
     public void testSingleDecimalToken() {
         final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
         final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age=44.34");

@@ -2,6 +2,7 @@ package com.github.sidhant92.boolparser.parser.canopy;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import com.github.sidhant92.boolparser.constant.DataType;
 import com.github.sidhant92.boolparser.constant.LogicalOperationType;
@@ -29,8 +30,8 @@ public class ActionsImpl implements Actions {
         Object value;
         DataType valueDataType;
         if (stringValue.indexOf('.') == -1) {
-            value = Integer.parseInt(stringValue);
-            valueDataType = DataType.INTEGER;
+            valueDataType = getNumericDataType(stringValue);
+            value = getValue(stringValue, valueDataType);
         } else {
             value = Double.parseDouble(stringValue);
             valueDataType = DataType.DECIMAL;
@@ -56,15 +57,15 @@ public class ActionsImpl implements Actions {
         Object fromValue, toValue;
         DataType fromValueDataType, toValueDataType;
         if (fromStringValue.indexOf('.') == -1) {
-            fromValue = Integer.parseInt(fromStringValue);
-            fromValueDataType = DataType.INTEGER;
+            fromValueDataType = getNumericDataType(fromStringValue);
+            fromValue = getValue(fromStringValue, fromValueDataType);
         } else {
             fromValue = Double.parseDouble(fromStringValue);
             fromValueDataType = DataType.DECIMAL;
         }
         if (toStringValue.indexOf('.') == -1) {
-            toValue = Integer.parseInt(toStringValue);
-            toValueDataType = DataType.INTEGER;
+            toValueDataType = getNumericDataType(toStringValue);
+            toValue = getValue(toStringValue, toValueDataType);
         } else {
             toValue = Double.parseDouble(toStringValue);
             toValueDataType = DataType.DECIMAL;
@@ -85,6 +86,11 @@ public class ActionsImpl implements Actions {
         } else {
             return node;
         }
+    }
+
+    private DataType getNumericDataType(final String value) {
+        final Optional<Integer> integerOptional = parseInteger(value);
+        return integerOptional.isPresent() ? DataType.INTEGER : DataType.LONG;
     }
 
     private String getCapturedString(final String input) {
@@ -140,21 +146,35 @@ public class ActionsImpl implements Actions {
     }
 
     private DataType findNumericDataTypeForList(final List<String> list) {
-        DataType dataType = DataType.INTEGER;
         if (list.stream().anyMatch(a -> a.indexOf('.') != -1)) {
-            dataType = DataType.DECIMAL;
+            return DataType.DECIMAL;
+        } else {
+            if (list.stream().allMatch(a -> parseInteger(a).isPresent())) {
+                return DataType.INTEGER;
+            } else {
+                return DataType.LONG;
+            }
         }
-        return dataType;
     }
 
     private Object getValue(final String value, final DataType dataType) {
         switch (dataType) {
             case INTEGER:
                 return Integer.parseInt(value);
+            case LONG:
+                return Long.parseLong(value);
             case DECIMAL:
                 return Double.parseDouble(value);
             default:
                 return value;
+        }
+    }
+
+    private Optional<Integer> parseInteger(final String number) {
+        try {
+            return Optional.of(Integer.parseInt(number));
+        } catch (NumberFormatException ex) {
+            return Optional.empty();
         }
     }
 
