@@ -18,12 +18,12 @@ abstract class Grammar {
     private static Pattern REGEX_1 = Pattern.compile("\\A[0-9]");
     private static Pattern REGEX_2 = Pattern.compile("\\A[0-9]");
     private static Pattern REGEX_3 = Pattern.compile("\\A[0-9]");
-    private static Pattern REGEX_4 = Pattern.compile("\\A[a-zA-Z0-9_.]");
+    private static Pattern REGEX_4 = Pattern.compile("\\A[^ \\t'\"<>=:(),]");
     private static Pattern REGEX_5 = Pattern.compile("\\A[\"]");
-    private static Pattern REGEX_6 = Pattern.compile("\\A[a-zA-Z0-9_.' \\t]");
+    private static Pattern REGEX_6 = Pattern.compile("\\A[^\"]");
     private static Pattern REGEX_7 = Pattern.compile("\\A[\"]");
     private static Pattern REGEX_8 = Pattern.compile("\\A[']");
-    private static Pattern REGEX_9 = Pattern.compile("\\A[a-zA-Z0-9_.\" \\t]");
+    private static Pattern REGEX_9 = Pattern.compile("\\A[^']");
     private static Pattern REGEX_10 = Pattern.compile("\\A[']");
     private static Pattern REGEX_11 = Pattern.compile("\\A[0-9]");
     private static Pattern REGEX_12 = Pattern.compile("\\A[0-9]");
@@ -3400,7 +3400,7 @@ abstract class Grammar {
                         expected = new ArrayList<String>();
                     }
                     if (offset == failure) {
-                        expected.add("[a-zA-Z0-9_.]");
+                        expected.add("[^ \\t'\"<>=:(),]");
                     }
                 }
                 if (address1 != FAILURE) {
@@ -3474,7 +3474,7 @@ abstract class Grammar {
                                 expected = new ArrayList<String>();
                             }
                             if (offset == failure) {
-                                expected.add("[a-zA-Z0-9_.' \\t]");
+                                expected.add("[^\"]");
                             }
                         }
                         if (address5 != FAILURE) {
@@ -3604,7 +3604,7 @@ abstract class Grammar {
                                     expected = new ArrayList<String>();
                                 }
                                 if (offset == failure) {
-                                    expected.add("[a-zA-Z0-9_.\" \\t]");
+                                    expected.add("[^']");
                                 }
                             }
                             if (address11 != FAILURE) {
