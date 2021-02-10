@@ -1,6 +1,7 @@
 package com.github.sidhant92.boolparser.parser.canopy;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -121,12 +122,19 @@ public class ActionsImpl implements Actions {
     public TreeNode make_logical_or(String input, int start, int end, List<TreeNode> elements) {
         BooleanNode booleanNode = new BooleanNode();
         if (elements.get(0) instanceof BooleanNode) {
-            booleanNode = (BooleanNode) elements.get(0);
+            if (elements.get(1).elements.isEmpty()) {
+                booleanNode = (BooleanNode) elements.get(0);
+            } else {
+                booleanNode.addClause(elements.get(0), LogicalOperationType.OR);
+                for (TreeNode node : elements.get(1)) {
+                    booleanNode.addClause(node.get(Label.logical_and), LogicalOperationType.OR);
+                }
+            }
         } else {
             booleanNode.addClause(elements.get(0), LogicalOperationType.OR);
-        }
-        for (TreeNode node : elements.get(1)) {
-            booleanNode.addClause(node.get(Label.logical_and), LogicalOperationType.OR);
+            for (TreeNode node : elements.get(1)) {
+                booleanNode.addClause(node.get(Label.logical_and), LogicalOperationType.OR);
+            }
         }
         if (booleanNode.getAndQueries().size() == 0 && booleanNode.getOrQueries().size() == 0) {
             return elements.get(0);

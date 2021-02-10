@@ -1,6 +1,7 @@
 package com.github.sidhant92.boolparser.parser.canopy.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import com.github.sidhant92.boolparser.constant.LogicalOperationType;
 import com.github.sidhant92.boolparser.parser.canopy.TreeNode;

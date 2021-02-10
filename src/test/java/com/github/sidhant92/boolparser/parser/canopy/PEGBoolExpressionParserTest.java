@@ -167,6 +167,30 @@ public class PEGBoolExpressionParserTest {
     }
 
     @Test
+    public void testNestedAndCondition1() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("(agel=44 AND cityl:abc) OR (ager=33 AND cityr:dummy)");
+        assertTrue(nodeOptional.isPresent());
+        assertEquals(nodeOptional.get().getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
+        final BoolExpression boolExpression = (BoolExpression) nodeOptional.get();
+        assertEquals(boolExpression.getOrOperations().size(), 2);
+        assertEquals(boolExpression.getOrOperations().get(0).getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
+        assertEquals(boolExpression.getOrOperations().get(1).getNodeType().name(), NodeType.BOOL_EXPRESSION.name());
+        final BoolExpression nestedLeftBooleanExpression = (BoolExpression) boolExpression.getOrOperations().get(0);
+        assertEquals(nestedLeftBooleanExpression.getAndOperations().size(), 2);
+        assertEquals(nestedLeftBooleanExpression.getAndOperations().get(0).getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
+        assertEquals(nestedLeftBooleanExpression.getAndOperations().get(1).getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyNumericToken((NumericToken) nestedLeftBooleanExpression.getAndOperations().get(0), "agel", 44, Operator.EQUALS);
+        verifyStringToken((StringToken) nestedLeftBooleanExpression.getAndOperations().get(1), "cityl", "abc");
+        final BoolExpression nestedRightBooleanExpression = (BoolExpression) boolExpression.getOrOperations().get(1);
+        assertEquals(nestedRightBooleanExpression.getAndOperations().size(), 2);
+        assertEquals(nestedRightBooleanExpression.getAndOperations().get(0).getNodeType().name(), NodeType.NUMERIC_TOKEN.name());
+        assertEquals(nestedRightBooleanExpression.getAndOperations().get(1).getNodeType().name(), NodeType.STRING_TOKEN.name());
+        verifyNumericToken((NumericToken) nestedRightBooleanExpression.getAndOperations().get(0), "ager", 33, Operator.EQUALS);
+        verifyStringToken((StringToken) nestedRightBooleanExpression.getAndOperations().get(1), "cityr", "dummy");
+    }
+
+    @Test
     public void testNestedOrCondition() {
         final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
         final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name:test AND (age=33 OR city:dummy)");
