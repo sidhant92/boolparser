@@ -23,6 +23,16 @@ public class BooleanExpressionEvaluatorTest {
     }
 
     @Test
+    public void testSimpleTrueCorrectExpressions() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("name", "abc-");
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("name:abc-", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
     public void testSimpleFalseIncorrectExpression() {
         final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
         final Map<String, Object> data = new HashMap<>();
