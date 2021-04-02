@@ -108,8 +108,10 @@ public class ActionsImpl implements Actions {
 
     public TreeNode make_logical_and(String input, int start, int end, List<TreeNode> elements) {
         BooleanNode booleanNode = new BooleanNode();
-        for (TreeNode node : elements.get(1)) {
+        if (elements.get(1).iterator().hasNext()) {
             booleanNode.addClause(elements.get(0), LogicalOperationType.AND);
+        }
+        for (TreeNode node : elements.get(1)) {
             booleanNode.addClause(node.get(Label.primary), LogicalOperationType.AND);
         }
         if (booleanNode.getAndQueries().size() == 0) {
