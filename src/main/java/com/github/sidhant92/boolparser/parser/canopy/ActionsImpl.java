@@ -1,7 +1,7 @@
 package com.github.sidhant92.boolparser.parser.canopy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -190,10 +190,16 @@ public class ActionsImpl implements Actions {
 
     public TreeNode make_string_list(String input, int start, int end, List<TreeNode> elements) {
         final BooleanNode booleanNode = new BooleanNode();
-        final List<String> list = Arrays.stream(elements.get(7).text.split(",")).map(String::trim).map(element -> element.replace("'", ""))
-                                        .collect(Collectors.toList());
+        final List<String> list = getAllAlphanumericTokens(elements.get(7));
         final List<TreeNode> nodes = list.stream().map(data -> new StringNode(elements.get(2).text, data)).collect(Collectors.toList());
         nodes.forEach(a -> booleanNode.addClause(a, LogicalOperationType.OR));
         return checkNotExpression(elements, booleanNode);
+    }
+
+    private List<String> getAllAlphanumericTokens(final TreeNode treeNode) {
+        final List<String> tokens = new ArrayList<>();
+        Optional.ofNullable(treeNode.labelled.get(Label.alphanumeric)).ifPresent(node -> tokens.add(getCapturedString(node.text)));
+        treeNode.elements.forEach(node -> tokens.addAll(getAllAlphanumericTokens(node)));
+        return tokens;
     }
 }
