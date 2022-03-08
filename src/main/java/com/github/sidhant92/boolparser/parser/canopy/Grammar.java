@@ -324,7 +324,7 @@ abstract class Grammar {
                 TreeNode address1 = FAILURE;
                 String chunk0 = null;
                 if (offset < inputSize) {
-                    chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk0 = input.substring(offset, offset + 1);
                 }
                 if (chunk0 != null && chunk0.equals("(")) {
                     address1 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -348,7 +348,7 @@ abstract class Grammar {
                         TreeNode address3 = FAILURE;
                         String chunk1 = null;
                         if (offset < inputSize) {
-                            chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk1 = input.substring(offset, offset + 1);
                         }
                         if (chunk1 != null && chunk1.equals(")")) {
                             address3 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -411,7 +411,7 @@ abstract class Grammar {
             int index3 = offset;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 3, input.length()));
+                chunk0 = input.substring(offset, offset + 3);
             }
             if (chunk0 != null && chunk0.equals("NOT")) {
                 address1 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -479,7 +479,7 @@ abstract class Grammar {
                             TreeNode address7 = FAILURE;
                             String chunk1 = null;
                             if (offset < inputSize) {
-                                chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                chunk1 = input.substring(offset, offset + 1);
                             }
                             if (chunk1 != null && chunk1.equals("=")) {
                                 address7 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -562,7 +562,7 @@ abstract class Grammar {
                 int index8 = offset;
                 String chunk2 = null;
                 if (offset < inputSize) {
-                    chunk2 = input.substring(offset, Math.min(offset + 3, input.length()));
+                    chunk2 = input.substring(offset, offset + 3);
                 }
                 if (chunk2 != null && chunk2.equals("NOT")) {
                     address11 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -630,7 +630,7 @@ abstract class Grammar {
                                 TreeNode address17 = FAILURE;
                                 String chunk3 = null;
                                 if (offset < inputSize) {
-                                    chunk3 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                    chunk3 = input.substring(offset, offset + 1);
                                 }
                                 if (chunk3 != null && chunk3.equals(">")) {
                                     address17 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -713,7 +713,7 @@ abstract class Grammar {
                     int index13 = offset;
                     String chunk4 = null;
                     if (offset < inputSize) {
-                        chunk4 = input.substring(offset, Math.min(offset + 3, input.length()));
+                        chunk4 = input.substring(offset, offset + 3);
                     }
                     if (chunk4 != null && chunk4.equals("NOT")) {
                         address21 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -781,7 +781,7 @@ abstract class Grammar {
                                     TreeNode address27 = FAILURE;
                                     String chunk5 = null;
                                     if (offset < inputSize) {
-                                        chunk5 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                        chunk5 = input.substring(offset, offset + 2);
                                     }
                                     if (chunk5 != null && chunk5.equals(">=")) {
                                         address27 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -864,7 +864,7 @@ abstract class Grammar {
                         int index18 = offset;
                         String chunk6 = null;
                         if (offset < inputSize) {
-                            chunk6 = input.substring(offset, Math.min(offset + 3, input.length()));
+                            chunk6 = input.substring(offset, offset + 3);
                         }
                         if (chunk6 != null && chunk6.equals("NOT")) {
                             address31 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -932,7 +932,7 @@ abstract class Grammar {
                                         TreeNode address37 = FAILURE;
                                         String chunk7 = null;
                                         if (offset < inputSize) {
-                                            chunk7 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                            chunk7 = input.substring(offset, offset + 1);
                                         }
                                         if (chunk7 != null && chunk7.equals("<")) {
                                             address37 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -1015,7 +1015,7 @@ abstract class Grammar {
                             int index23 = offset;
                             String chunk8 = null;
                             if (offset < inputSize) {
-                                chunk8 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                chunk8 = input.substring(offset, offset + 3);
                             }
                             if (chunk8 != null && chunk8.equals("NOT")) {
                                 address41 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1083,7 +1083,7 @@ abstract class Grammar {
                                             TreeNode address47 = FAILURE;
                                             String chunk9 = null;
                                             if (offset < inputSize) {
-                                                chunk9 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                chunk9 = input.substring(offset, offset + 2);
                                             }
                                             if (chunk9 != null && chunk9.equals("<=")) {
                                                 address47 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -1166,7 +1166,7 @@ abstract class Grammar {
                                 int index28 = offset;
                                 String chunk10 = null;
                                 if (offset < inputSize) {
-                                    chunk10 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                    chunk10 = input.substring(offset, offset + 3);
                                 }
                                 if (chunk10 != null && chunk10.equals("NOT")) {
                                     address51 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1234,7 +1234,7 @@ abstract class Grammar {
                                                 TreeNode address57 = FAILURE;
                                                 String chunk11 = null;
                                                 if (offset < inputSize) {
-                                                    chunk11 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                    chunk11 = input.substring(offset, offset + 1);
                                                 }
                                                 if (chunk11 != null && chunk11.equals(">")) {
                                                     address57 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -1317,7 +1317,7 @@ abstract class Grammar {
                                     int index33 = offset;
                                     String chunk12 = null;
                                     if (offset < inputSize) {
-                                        chunk12 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                        chunk12 = input.substring(offset, offset + 3);
                                     }
                                     if (chunk12 != null && chunk12.equals("NOT")) {
                                         address61 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1385,7 +1385,7 @@ abstract class Grammar {
                                                     TreeNode address67 = FAILURE;
                                                     String chunk13 = null;
                                                     if (offset < inputSize) {
-                                                        chunk13 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                        chunk13 = input.substring(offset, offset + 2);
                                                     }
                                                     if (chunk13 != null && chunk13.equals(">=")) {
                                                         address67 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -1468,7 +1468,7 @@ abstract class Grammar {
                                         int index38 = offset;
                                         String chunk14 = null;
                                         if (offset < inputSize) {
-                                            chunk14 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                            chunk14 = input.substring(offset, offset + 3);
                                         }
                                         if (chunk14 != null && chunk14.equals("NOT")) {
                                             address71 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1536,7 +1536,7 @@ abstract class Grammar {
                                                         TreeNode address77 = FAILURE;
                                                         String chunk15 = null;
                                                         if (offset < inputSize) {
-                                                            chunk15 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                            chunk15 = input.substring(offset, offset + 1);
                                                         }
                                                         if (chunk15 != null && chunk15.equals("<")) {
                                                             address77 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -1619,7 +1619,7 @@ abstract class Grammar {
                                             int index43 = offset;
                                             String chunk16 = null;
                                             if (offset < inputSize) {
-                                                chunk16 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                chunk16 = input.substring(offset, offset + 3);
                                             }
                                             if (chunk16 != null && chunk16.equals("NOT")) {
                                                 address81 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1687,7 +1687,7 @@ abstract class Grammar {
                                                             TreeNode address87 = FAILURE;
                                                             String chunk17 = null;
                                                             if (offset < inputSize) {
-                                                                chunk17 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                                chunk17 = input.substring(offset, offset + 2);
                                                             }
                                                             if (chunk17 != null && chunk17.equals("<=")) {
                                                                 address87 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -1770,7 +1770,7 @@ abstract class Grammar {
                                                 int index48 = offset;
                                                 String chunk18 = null;
                                                 if (offset < inputSize) {
-                                                    chunk18 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                    chunk18 = input.substring(offset, offset + 3);
                                                 }
                                                 if (chunk18 != null && chunk18.equals("NOT")) {
                                                     address91 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1838,7 +1838,7 @@ abstract class Grammar {
                                                                 TreeNode address97 = FAILURE;
                                                                 String chunk19 = null;
                                                                 if (offset < inputSize) {
-                                                                    chunk19 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                                    chunk19 = input.substring(offset, offset + 2);
                                                                 }
                                                                 if (chunk19 != null && chunk19.equals("!=")) {
                                                                     address97 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -1921,7 +1921,7 @@ abstract class Grammar {
                                                     int index53 = offset;
                                                     String chunk20 = null;
                                                     if (offset < inputSize) {
-                                                        chunk20 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                        chunk20 = input.substring(offset, offset + 3);
                                                     }
                                                     if (chunk20 != null && chunk20.equals("NOT")) {
                                                         address101 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -1989,7 +1989,7 @@ abstract class Grammar {
                                                                     TreeNode address107 = FAILURE;
                                                                     String chunk21 = null;
                                                                     if (offset < inputSize) {
-                                                                        chunk21 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                        chunk21 = input.substring(offset, offset + 1);
                                                                     }
                                                                     if (chunk21 != null && chunk21.equals(":")) {
                                                                         address107 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2054,7 +2054,7 @@ abstract class Grammar {
                                                                                     int index58 = offset;
                                                                                     String chunk22 = null;
                                                                                     if (offset < inputSize) {
-                                                                                        chunk22 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                                                        chunk22 = input.substring(offset, offset + 2);
                                                                                     }
                                                                                     if (chunk22 != null && chunk22.equals("TO")) {
                                                                                         address113 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -2073,7 +2073,7 @@ abstract class Grammar {
                                                                                         offset = index58;
                                                                                         String chunk23 = null;
                                                                                         if (offset < inputSize) {
-                                                                                            chunk23 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                                                                            chunk23 = input.substring(offset, offset + 2);
                                                                                         }
                                                                                         if (chunk23 != null && chunk23.equals("to")) {
                                                                                             address113 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -2176,7 +2176,7 @@ abstract class Grammar {
                                                         int index61 = offset;
                                                         String chunk24 = null;
                                                         if (offset < inputSize) {
-                                                            chunk24 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                            chunk24 = input.substring(offset, offset + 3);
                                                         }
                                                         if (chunk24 != null && chunk24.equals("NOT")) {
                                                             address117 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -2244,7 +2244,7 @@ abstract class Grammar {
                                                                         TreeNode address123 = FAILURE;
                                                                         String chunk25 = null;
                                                                         if (offset < inputSize) {
-                                                                            chunk25 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                            chunk25 = input.substring(offset, offset + 1);
                                                                         }
                                                                         if (chunk25 != null && chunk25.equals(":")) {
                                                                             address123 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2327,7 +2327,7 @@ abstract class Grammar {
                                                             int index66 = offset;
                                                             String chunk26 = null;
                                                             if (offset < inputSize) {
-                                                                chunk26 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                                chunk26 = input.substring(offset, offset + 3);
                                                             }
                                                             if (chunk26 != null && chunk26.equals("NOT")) {
                                                                 address127 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -2419,7 +2419,7 @@ abstract class Grammar {
                                                                                     TreeNode address136 = FAILURE;
                                                                                     String chunk27 = null;
                                                                                     if (offset < inputSize) {
-                                                                                        chunk27 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                        chunk27 = input.substring(offset, offset + 1);
                                                                                     }
                                                                                     if (chunk27 != null && chunk27.equals("(")) {
                                                                                         address136 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2443,7 +2443,7 @@ abstract class Grammar {
                                                                                             TreeNode address138 = FAILURE;
                                                                                             String chunk28 = null;
                                                                                             if (offset < inputSize) {
-                                                                                                chunk28 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                                chunk28 = input.substring(offset, offset + 1);
                                                                                             }
                                                                                             if (chunk28 != null && chunk28.equals(")")) {
                                                                                                 address138 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2510,7 +2510,7 @@ abstract class Grammar {
                                                                 int index71 = offset;
                                                                 String chunk29 = null;
                                                                 if (offset < inputSize) {
-                                                                    chunk29 = input.substring(offset, Math.min(offset + 3, input.length()));
+                                                                    chunk29 = input.substring(offset, offset + 3);
                                                                 }
                                                                 if (chunk29 != null && chunk29.equals("NOT")) {
                                                                     address139 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -2602,7 +2602,7 @@ abstract class Grammar {
                                                                                         TreeNode address148 = FAILURE;
                                                                                         String chunk30 = null;
                                                                                         if (offset < inputSize) {
-                                                                                            chunk30 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                            chunk30 = input.substring(offset, offset + 1);
                                                                                         }
                                                                                         if (chunk30 != null && chunk30.equals("(")) {
                                                                                             address148 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2626,7 +2626,7 @@ abstract class Grammar {
                                                                                                 TreeNode address150 = FAILURE;
                                                                                                 String chunk31 = null;
                                                                                                 if (offset < inputSize) {
-                                                                                                    chunk31 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                                                                                    chunk31 = input.substring(offset, offset + 1);
                                                                                                 }
                                                                                                 if (chunk31 != null && chunk31.equals(")")) {
                                                                                                     address150 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2687,6 +2687,374 @@ abstract class Grammar {
                                                                 }
                                                                 if (address0 == FAILURE) {
                                                                     offset = index1;
+                                                                    int index75 = offset;
+                                                                    List<TreeNode> elements58 = new ArrayList<TreeNode>(9);
+                                                                    TreeNode address151 = FAILURE;
+                                                                    int index76 = offset;
+                                                                    String chunk32 = null;
+                                                                    if (offset < inputSize) {
+                                                                        chunk32 = input.substring(offset, offset + 3);
+                                                                    }
+                                                                    if (chunk32 != null && chunk32.equals("NOT")) {
+                                                                        address151 = new TreeNode(input.substring(offset, offset + 3), offset);
+                                                                        offset = offset + 3;
+                                                                    } else {
+                                                                        address151 = FAILURE;
+                                                                        if (offset > failure) {
+                                                                            failure = offset;
+                                                                            expected = new ArrayList<String>();
+                                                                        }
+                                                                        if (offset == failure) {
+                                                                            expected.add("\"NOT\"");
+                                                                        }
+                                                                    }
+                                                                    if (address151 == FAILURE) {
+                                                                        address151 = new TreeNode(input.substring(index76, index76), index76);
+                                                                        offset = index76;
+                                                                    }
+                                                                    if (address151 != FAILURE) {
+                                                                        elements58.add(0, address151);
+                                                                        TreeNode address152 = FAILURE;
+                                                                        int remaining44 = 0;
+                                                                        int index77 = offset;
+                                                                        List<TreeNode> elements59 = new ArrayList<TreeNode>();
+                                                                        TreeNode address153 = new TreeNode("", -1);
+                                                                        while (address153 != FAILURE) {
+                                                                            address153 = _read_ws();
+                                                                            if (address153 != FAILURE) {
+                                                                                elements59.add(address153);
+                                                                                --remaining44;
+                                                                            }
+                                                                        }
+                                                                        if (remaining44 <= 0) {
+                                                                            address152 = new TreeNode(input.substring(index77, offset), index77, elements59);
+                                                                            offset = offset;
+                                                                        } else {
+                                                                            address152 = FAILURE;
+                                                                        }
+                                                                        if (address152 != FAILURE) {
+                                                                            elements58.add(1, address152);
+                                                                            TreeNode address154 = FAILURE;
+                                                                            address154 = _read_alphanumeric();
+                                                                            if (address154 != FAILURE) {
+                                                                                elements58.add(2, address154);
+                                                                                TreeNode address155 = FAILURE;
+                                                                                int remaining45 = 0;
+                                                                                int index78 = offset;
+                                                                                List<TreeNode> elements60 = new ArrayList<TreeNode>();
+                                                                                TreeNode address156 = new TreeNode("", -1);
+                                                                                while (address156 != FAILURE) {
+                                                                                    address156 = _read_ws();
+                                                                                    if (address156 != FAILURE) {
+                                                                                        elements60.add(address156);
+                                                                                        --remaining45;
+                                                                                    }
+                                                                                }
+                                                                                if (remaining45 <= 0) {
+                                                                                    address155 = new TreeNode(input.substring(index78, offset), index78, elements60);
+                                                                                    offset = offset;
+                                                                                } else {
+                                                                                    address155 = FAILURE;
+                                                                                }
+                                                                                if (address155 != FAILURE) {
+                                                                                    elements58.add(3, address155);
+                                                                                    TreeNode address157 = FAILURE;
+                                                                                    address157 = _read_rev_all();
+                                                                                    if (address157 != FAILURE) {
+                                                                                        elements58.add(4, address157);
+                                                                                        TreeNode address158 = FAILURE;
+                                                                                        int remaining46 = 0;
+                                                                                        int index79 = offset;
+                                                                                        List<TreeNode> elements61 = new ArrayList<TreeNode>();
+                                                                                        TreeNode address159 = new TreeNode("", -1);
+                                                                                        while (address159 != FAILURE) {
+                                                                                            address159 = _read_ws();
+                                                                                            if (address159 != FAILURE) {
+                                                                                                elements61.add(address159);
+                                                                                                --remaining46;
+                                                                                            }
+                                                                                        }
+                                                                                        if (remaining46 <= 0) {
+                                                                                            address158 = new TreeNode(input.substring(index79, offset), index79, elements61);
+                                                                                            offset = offset;
+                                                                                        } else {
+                                                                                            address158 = FAILURE;
+                                                                                        }
+                                                                                        if (address158 != FAILURE) {
+                                                                                            elements58.add(5, address158);
+                                                                                            TreeNode address160 = FAILURE;
+                                                                                            String chunk33 = null;
+                                                                                            if (offset < inputSize) {
+                                                                                                chunk33 = input.substring(offset, offset + 1);
+                                                                                            }
+                                                                                            if (chunk33 != null && chunk33.equals("(")) {
+                                                                                                address160 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                offset = offset + 1;
+                                                                                            } else {
+                                                                                                address160 = FAILURE;
+                                                                                                if (offset > failure) {
+                                                                                                    failure = offset;
+                                                                                                    expected = new ArrayList<String>();
+                                                                                                }
+                                                                                                if (offset == failure) {
+                                                                                                    expected.add("\"(\"");
+                                                                                                }
+                                                                                            }
+                                                                                            if (address160 != FAILURE) {
+                                                                                                elements58.add(6, address160);
+                                                                                                TreeNode address161 = FAILURE;
+                                                                                                address161 = _read_number_list();
+                                                                                                if (address161 != FAILURE) {
+                                                                                                    elements58.add(7, address161);
+                                                                                                    TreeNode address162 = FAILURE;
+                                                                                                    String chunk34 = null;
+                                                                                                    if (offset < inputSize) {
+                                                                                                        chunk34 = input.substring(offset, offset + 1);
+                                                                                                    }
+                                                                                                    if (chunk34 != null && chunk34.equals(")")) {
+                                                                                                        address162 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                        offset = offset + 1;
+                                                                                                    } else {
+                                                                                                        address162 = FAILURE;
+                                                                                                        if (offset > failure) {
+                                                                                                            failure = offset;
+                                                                                                            expected = new ArrayList<String>();
+                                                                                                        }
+                                                                                                        if (offset == failure) {
+                                                                                                            expected.add("\")\"");
+                                                                                                        }
+                                                                                                    }
+                                                                                                    if (address162 != FAILURE) {
+                                                                                                        elements58.add(8, address162);
+                                                                                                    } else {
+                                                                                                        elements58 = null;
+                                                                                                        offset = index75;
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    elements58 = null;
+                                                                                                    offset = index75;
+                                                                                                }
+                                                                                            } else {
+                                                                                                elements58 = null;
+                                                                                                offset = index75;
+                                                                                            }
+                                                                                        } else {
+                                                                                            elements58 = null;
+                                                                                            offset = index75;
+                                                                                        }
+                                                                                    } else {
+                                                                                        elements58 = null;
+                                                                                        offset = index75;
+                                                                                    }
+                                                                                } else {
+                                                                                    elements58 = null;
+                                                                                    offset = index75;
+                                                                                }
+                                                                            } else {
+                                                                                elements58 = null;
+                                                                                offset = index75;
+                                                                            }
+                                                                        } else {
+                                                                            elements58 = null;
+                                                                            offset = index75;
+                                                                        }
+                                                                    } else {
+                                                                        elements58 = null;
+                                                                        offset = index75;
+                                                                    }
+                                                                    if (elements58 == null) {
+                                                                        address0 = FAILURE;
+                                                                    } else {
+                                                                        address0 = actions.make_rev_all_decimal_list(input, index75, offset, elements58);
+                                                                        offset = offset;
+                                                                    }
+                                                                    if (address0 == FAILURE) {
+                                                                        offset = index1;
+                                                                        int index80 = offset;
+                                                                        List<TreeNode> elements62 = new ArrayList<TreeNode>(9);
+                                                                        TreeNode address163 = FAILURE;
+                                                                        int index81 = offset;
+                                                                        String chunk35 = null;
+                                                                        if (offset < inputSize) {
+                                                                            chunk35 = input.substring(offset, offset + 3);
+                                                                        }
+                                                                        if (chunk35 != null && chunk35.equals("NOT")) {
+                                                                            address163 = new TreeNode(input.substring(offset, offset + 3), offset);
+                                                                            offset = offset + 3;
+                                                                        } else {
+                                                                            address163 = FAILURE;
+                                                                            if (offset > failure) {
+                                                                                failure = offset;
+                                                                                expected = new ArrayList<String>();
+                                                                            }
+                                                                            if (offset == failure) {
+                                                                                expected.add("\"NOT\"");
+                                                                            }
+                                                                        }
+                                                                        if (address163 == FAILURE) {
+                                                                            address163 = new TreeNode(input.substring(index81, index81), index81);
+                                                                            offset = index81;
+                                                                        }
+                                                                        if (address163 != FAILURE) {
+                                                                            elements62.add(0, address163);
+                                                                            TreeNode address164 = FAILURE;
+                                                                            int remaining47 = 0;
+                                                                            int index82 = offset;
+                                                                            List<TreeNode> elements63 = new ArrayList<TreeNode>();
+                                                                            TreeNode address165 = new TreeNode("", -1);
+                                                                            while (address165 != FAILURE) {
+                                                                                address165 = _read_ws();
+                                                                                if (address165 != FAILURE) {
+                                                                                    elements63.add(address165);
+                                                                                    --remaining47;
+                                                                                }
+                                                                            }
+                                                                            if (remaining47 <= 0) {
+                                                                                address164 = new TreeNode(input.substring(index82, offset), index82, elements63);
+                                                                                offset = offset;
+                                                                            } else {
+                                                                                address164 = FAILURE;
+                                                                            }
+                                                                            if (address164 != FAILURE) {
+                                                                                elements62.add(1, address164);
+                                                                                TreeNode address166 = FAILURE;
+                                                                                address166 = _read_alphanumeric();
+                                                                                if (address166 != FAILURE) {
+                                                                                    elements62.add(2, address166);
+                                                                                    TreeNode address167 = FAILURE;
+                                                                                    int remaining48 = 0;
+                                                                                    int index83 = offset;
+                                                                                    List<TreeNode> elements64 = new ArrayList<TreeNode>();
+                                                                                    TreeNode address168 = new TreeNode("", -1);
+                                                                                    while (address168 != FAILURE) {
+                                                                                        address168 = _read_ws();
+                                                                                        if (address168 != FAILURE) {
+                                                                                            elements64.add(address168);
+                                                                                            --remaining48;
+                                                                                        }
+                                                                                    }
+                                                                                    if (remaining48 <= 0) {
+                                                                                        address167 = new TreeNode(input.substring(index83, offset), index83, elements64);
+                                                                                        offset = offset;
+                                                                                    } else {
+                                                                                        address167 = FAILURE;
+                                                                                    }
+                                                                                    if (address167 != FAILURE) {
+                                                                                        elements62.add(3, address167);
+                                                                                        TreeNode address169 = FAILURE;
+                                                                                        address169 = _read_rev_all();
+                                                                                        if (address169 != FAILURE) {
+                                                                                            elements62.add(4, address169);
+                                                                                            TreeNode address170 = FAILURE;
+                                                                                            int remaining49 = 0;
+                                                                                            int index84 = offset;
+                                                                                            List<TreeNode> elements65 = new ArrayList<TreeNode>();
+                                                                                            TreeNode address171 = new TreeNode("", -1);
+                                                                                            while (address171 != FAILURE) {
+                                                                                                address171 = _read_ws();
+                                                                                                if (address171 != FAILURE) {
+                                                                                                    elements65.add(address171);
+                                                                                                    --remaining49;
+                                                                                                }
+                                                                                            }
+                                                                                            if (remaining49 <= 0) {
+                                                                                                address170 = new TreeNode(input.substring(index84, offset), index84, elements65);
+                                                                                                offset = offset;
+                                                                                            } else {
+                                                                                                address170 = FAILURE;
+                                                                                            }
+                                                                                            if (address170 != FAILURE) {
+                                                                                                elements62.add(5, address170);
+                                                                                                TreeNode address172 = FAILURE;
+                                                                                                String chunk36 = null;
+                                                                                                if (offset < inputSize) {
+                                                                                                    chunk36 = input.substring(offset, offset + 1);
+                                                                                                }
+                                                                                                if (chunk36 != null && chunk36.equals("(")) {
+                                                                                                    address172 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                    offset = offset + 1;
+                                                                                                } else {
+                                                                                                    address172 = FAILURE;
+                                                                                                    if (offset > failure) {
+                                                                                                        failure = offset;
+                                                                                                        expected = new ArrayList<String>();
+                                                                                                    }
+                                                                                                    if (offset == failure) {
+                                                                                                        expected.add("\"(\"");
+                                                                                                    }
+                                                                                                }
+                                                                                                if (address172 != FAILURE) {
+                                                                                                    elements62.add(6, address172);
+                                                                                                    TreeNode address173 = FAILURE;
+                                                                                                    address173 = _read_string_list();
+                                                                                                    if (address173 != FAILURE) {
+                                                                                                        elements62.add(7, address173);
+                                                                                                        TreeNode address174 = FAILURE;
+                                                                                                        String chunk37 = null;
+                                                                                                        if (offset < inputSize) {
+                                                                                                            chunk37 = input.substring(offset, offset + 1);
+                                                                                                        }
+                                                                                                        if (chunk37 != null && chunk37.equals(")")) {
+                                                                                                            address174 = new TreeNode(input.substring(offset, offset + 1), offset);
+                                                                                                            offset = offset + 1;
+                                                                                                        } else {
+                                                                                                            address174 = FAILURE;
+                                                                                                            if (offset > failure) {
+                                                                                                                failure = offset;
+                                                                                                                expected = new ArrayList<String>();
+                                                                                                            }
+                                                                                                            if (offset == failure) {
+                                                                                                                expected.add("\")\"");
+                                                                                                            }
+                                                                                                        }
+                                                                                                        if (address174 != FAILURE) {
+                                                                                                            elements62.add(8, address174);
+                                                                                                        } else {
+                                                                                                            elements62 = null;
+                                                                                                            offset = index80;
+                                                                                                        }
+                                                                                                    } else {
+                                                                                                        elements62 = null;
+                                                                                                        offset = index80;
+                                                                                                    }
+                                                                                                } else {
+                                                                                                    elements62 = null;
+                                                                                                    offset = index80;
+                                                                                                }
+                                                                                            } else {
+                                                                                                elements62 = null;
+                                                                                                offset = index80;
+                                                                                            }
+                                                                                        } else {
+                                                                                            elements62 = null;
+                                                                                            offset = index80;
+                                                                                        }
+                                                                                    } else {
+                                                                                        elements62 = null;
+                                                                                        offset = index80;
+                                                                                    }
+                                                                                } else {
+                                                                                    elements62 = null;
+                                                                                    offset = index80;
+                                                                                }
+                                                                            } else {
+                                                                                elements62 = null;
+                                                                                offset = index80;
+                                                                            }
+                                                                        } else {
+                                                                            elements62 = null;
+                                                                            offset = index80;
+                                                                        }
+                                                                        if (elements62 == null) {
+                                                                            address0 = FAILURE;
+                                                                        } else {
+                                                                            address0 = actions.make_rev_all_string_list(input, index80, offset, elements62);
+                                                                            offset = offset;
+                                                                        }
+                                                                        if (address0 == FAILURE) {
+                                                                            offset = index1;
+                                                                        }
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -2803,7 +3171,7 @@ abstract class Grammar {
             if (elements0 == null) {
                 address0 = FAILURE;
             } else {
-                address0 = new TreeNode20(input.substring(index1, offset), index1, elements0);
+                address0 = new TreeNode22(input.substring(index1, offset), index1, elements0);
                 offset = offset;
             }
             rule.put(index0, new CacheRecord(address0, offset));
@@ -2828,7 +3196,7 @@ abstract class Grammar {
             TreeNode address1 = FAILURE;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                chunk0 = input.substring(offset, offset + 1);
             }
             if (chunk0 != null && chunk0.equals(",")) {
                 address1 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -2908,7 +3276,7 @@ abstract class Grammar {
             if (elements0 == null) {
                 address0 = FAILURE;
             } else {
-                address0 = new TreeNode21(input.substring(index1, offset), index1, elements0);
+                address0 = new TreeNode23(input.substring(index1, offset), index1, elements0);
                 offset = offset;
             }
             rule.put(index0, new CacheRecord(address0, offset));
@@ -3013,7 +3381,7 @@ abstract class Grammar {
             if (elements0 == null) {
                 address0 = FAILURE;
             } else {
-                address0 = new TreeNode22(input.substring(index1, offset), index1, elements0);
+                address0 = new TreeNode24(input.substring(index1, offset), index1, elements0);
                 offset = offset;
             }
             rule.put(index0, new CacheRecord(address0, offset));
@@ -3038,7 +3406,7 @@ abstract class Grammar {
             TreeNode address1 = FAILURE;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                chunk0 = input.substring(offset, offset + 1);
             }
             if (chunk0 != null && chunk0.equals(",")) {
                 address1 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3118,7 +3486,7 @@ abstract class Grammar {
             if (elements0 == null) {
                 address0 = FAILURE;
             } else {
-                address0 = new TreeNode23(input.substring(index1, offset), index1, elements0);
+                address0 = new TreeNode25(input.substring(index1, offset), index1, elements0);
                 offset = offset;
             }
             rule.put(index0, new CacheRecord(address0, offset));
@@ -3148,7 +3516,7 @@ abstract class Grammar {
             while (address2 != FAILURE) {
                 String chunk0 = null;
                 if (offset < inputSize) {
-                    chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk0 = input.substring(offset, offset + 1);
                 }
                 if (chunk0 != null && REGEX_1.matcher(chunk0).matches()) {
                     address2 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3179,7 +3547,7 @@ abstract class Grammar {
                 TreeNode address3 = FAILURE;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk1 = input.substring(offset, offset + 1);
                 }
                 if (chunk1 != null && chunk1.equals(".")) {
                     address3 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3204,7 +3572,7 @@ abstract class Grammar {
                     while (address5 != FAILURE) {
                         String chunk2 = null;
                         if (offset < inputSize) {
-                            chunk2 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk2 = input.substring(offset, offset + 1);
                         }
                         if (chunk2 != null && REGEX_2.matcher(chunk2).matches()) {
                             address5 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3296,7 +3664,7 @@ abstract class Grammar {
             TreeNode address1 = FAILURE;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                chunk0 = input.substring(offset, offset + 1);
             }
             if (chunk0 != null && chunk0.equals(".")) {
                 address1 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3321,7 +3689,7 @@ abstract class Grammar {
                 while (address3 != FAILURE) {
                     String chunk1 = null;
                     if (offset < inputSize) {
-                        chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                        chunk1 = input.substring(offset, offset + 1);
                     }
                     if (chunk1 != null && REGEX_3.matcher(chunk1).matches()) {
                         address3 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3388,7 +3756,7 @@ abstract class Grammar {
             while (address1 != FAILURE) {
                 String chunk0 = null;
                 if (offset < inputSize) {
-                    chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk0 = input.substring(offset, offset + 1);
                 }
                 if (chunk0 != null && REGEX_4.matcher(chunk0).matches()) {
                     address1 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3426,7 +3794,7 @@ abstract class Grammar {
                 while (address3 != FAILURE) {
                     String chunk1 = null;
                     if (offset < inputSize) {
-                        chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                        chunk1 = input.substring(offset, offset + 1);
                     }
                     if (chunk1 != null && REGEX_5.matcher(chunk1).matches()) {
                         address3 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3462,7 +3830,7 @@ abstract class Grammar {
                     while (address5 != FAILURE) {
                         String chunk2 = null;
                         if (offset < inputSize) {
-                            chunk2 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk2 = input.substring(offset, offset + 1);
                         }
                         if (chunk2 != null && REGEX_6.matcher(chunk2).matches()) {
                             address5 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3498,7 +3866,7 @@ abstract class Grammar {
                         while (address7 != FAILURE) {
                             String chunk3 = null;
                             if (offset < inputSize) {
-                                chunk3 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                chunk3 = input.substring(offset, offset + 1);
                             }
                             if (chunk3 != null && REGEX_7.matcher(chunk3).matches()) {
                                 address7 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3556,7 +3924,7 @@ abstract class Grammar {
                     while (address9 != FAILURE) {
                         String chunk4 = null;
                         if (offset < inputSize) {
-                            chunk4 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk4 = input.substring(offset, offset + 1);
                         }
                         if (chunk4 != null && REGEX_8.matcher(chunk4).matches()) {
                             address9 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3592,7 +3960,7 @@ abstract class Grammar {
                         while (address11 != FAILURE) {
                             String chunk5 = null;
                             if (offset < inputSize) {
-                                chunk5 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                chunk5 = input.substring(offset, offset + 1);
                             }
                             if (chunk5 != null && REGEX_9.matcher(chunk5).matches()) {
                                 address11 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3628,7 +3996,7 @@ abstract class Grammar {
                             while (address13 != FAILURE) {
                                 String chunk6 = null;
                                 if (offset < inputSize) {
-                                    chunk6 = input.substring(offset, Math.min(offset + 1, input.length()));
+                                    chunk6 = input.substring(offset, offset + 1);
                                 }
                                 if (chunk6 != null && REGEX_10.matcher(chunk6).matches()) {
                                     address13 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3706,7 +4074,7 @@ abstract class Grammar {
             while (address2 != FAILURE) {
                 String chunk0 = null;
                 if (offset < inputSize) {
-                    chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk0 = input.substring(offset, offset + 1);
                 }
                 if (chunk0 != null && REGEX_11.matcher(chunk0).matches()) {
                     address2 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3738,7 +4106,7 @@ abstract class Grammar {
                 int index3 = offset;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk1 = input.substring(offset, offset + 1);
                 }
                 if (chunk1 != null && chunk1.equals(".")) {
                     address3 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3767,7 +4135,7 @@ abstract class Grammar {
                     while (address5 != FAILURE) {
                         String chunk2 = null;
                         if (offset < inputSize) {
-                            chunk2 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk2 = input.substring(offset, offset + 1);
                         }
                         if (chunk2 != null && REGEX_12.matcher(chunk2).matches()) {
                             address5 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3833,7 +4201,7 @@ abstract class Grammar {
             int index1 = offset;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 2, input.length()));
+                chunk0 = input.substring(offset, offset + 2);
             }
             if (chunk0 != null && chunk0.equals("OR")) {
                 address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -3852,7 +4220,7 @@ abstract class Grammar {
                 offset = index1;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 2, input.length()));
+                    chunk1 = input.substring(offset, offset + 2);
                 }
                 if (chunk1 != null && chunk1.equals("or")) {
                     address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -3871,7 +4239,7 @@ abstract class Grammar {
                     offset = index1;
                     String chunk2 = null;
                     if (offset < inputSize) {
-                        chunk2 = input.substring(offset, Math.min(offset + 1, input.length()));
+                        chunk2 = input.substring(offset, offset + 1);
                     }
                     if (chunk2 != null && chunk2.equals("|")) {
                         address0 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3890,7 +4258,7 @@ abstract class Grammar {
                         offset = index1;
                         String chunk3 = null;
                         if (offset < inputSize) {
-                            chunk3 = input.substring(offset, Math.min(offset + 2, input.length()));
+                            chunk3 = input.substring(offset, offset + 2);
                         }
                         if (chunk3 != null && chunk3.equals("||")) {
                             address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -3931,7 +4299,7 @@ abstract class Grammar {
             int index1 = offset;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 3, input.length()));
+                chunk0 = input.substring(offset, offset + 3);
             }
             if (chunk0 != null && chunk0.equals("AND")) {
                 address0 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -3950,7 +4318,7 @@ abstract class Grammar {
                 offset = index1;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 3, input.length()));
+                    chunk1 = input.substring(offset, offset + 3);
                 }
                 if (chunk1 != null && chunk1.equals("and")) {
                     address0 = new TreeNode(input.substring(offset, offset + 3), offset);
@@ -3969,7 +4337,7 @@ abstract class Grammar {
                     offset = index1;
                     String chunk2 = null;
                     if (offset < inputSize) {
-                        chunk2 = input.substring(offset, Math.min(offset + 1, input.length()));
+                        chunk2 = input.substring(offset, offset + 1);
                     }
                     if (chunk2 != null && chunk2.equals("&")) {
                         address0 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -3988,7 +4356,7 @@ abstract class Grammar {
                         offset = index1;
                         String chunk3 = null;
                         if (offset < inputSize) {
-                            chunk3 = input.substring(offset, Math.min(offset + 2, input.length()));
+                            chunk3 = input.substring(offset, offset + 2);
                         }
                         if (chunk3 != null && chunk3.equals("&&")) {
                             address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4029,7 +4397,7 @@ abstract class Grammar {
             int index1 = offset;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                chunk0 = input.substring(offset, offset + 1);
             }
             if (chunk0 != null && chunk0.equals("=")) {
                 address0 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -4048,7 +4416,7 @@ abstract class Grammar {
                 offset = index1;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 1, input.length()));
+                    chunk1 = input.substring(offset, offset + 1);
                 }
                 if (chunk1 != null && chunk1.equals(">")) {
                     address0 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -4067,7 +4435,7 @@ abstract class Grammar {
                     offset = index1;
                     String chunk2 = null;
                     if (offset < inputSize) {
-                        chunk2 = input.substring(offset, Math.min(offset + 2, input.length()));
+                        chunk2 = input.substring(offset, offset + 2);
                     }
                     if (chunk2 != null && chunk2.equals(">=")) {
                         address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4086,7 +4454,7 @@ abstract class Grammar {
                         offset = index1;
                         String chunk3 = null;
                         if (offset < inputSize) {
-                            chunk3 = input.substring(offset, Math.min(offset + 1, input.length()));
+                            chunk3 = input.substring(offset, offset + 1);
                         }
                         if (chunk3 != null && chunk3.equals("<")) {
                             address0 = new TreeNode(input.substring(offset, offset + 1), offset);
@@ -4105,7 +4473,7 @@ abstract class Grammar {
                             offset = index1;
                             String chunk4 = null;
                             if (offset < inputSize) {
-                                chunk4 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                chunk4 = input.substring(offset, offset + 2);
                             }
                             if (chunk4 != null && chunk4.equals("<=")) {
                                 address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4124,7 +4492,7 @@ abstract class Grammar {
                                 offset = index1;
                                 String chunk5 = null;
                                 if (offset < inputSize) {
-                                    chunk5 = input.substring(offset, Math.min(offset + 2, input.length()));
+                                    chunk5 = input.substring(offset, offset + 2);
                                 }
                                 if (chunk5 != null && chunk5.equals("!=")) {
                                     address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4167,7 +4535,7 @@ abstract class Grammar {
             int index1 = offset;
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 2, input.length()));
+                chunk0 = input.substring(offset, offset + 2);
             }
             if (chunk0 != null && chunk0.equals("IN")) {
                 address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4186,7 +4554,7 @@ abstract class Grammar {
                 offset = index1;
                 String chunk1 = null;
                 if (offset < inputSize) {
-                    chunk1 = input.substring(offset, Math.min(offset + 2, input.length()));
+                    chunk1 = input.substring(offset, offset + 2);
                 }
                 if (chunk1 != null && chunk1.equals("in")) {
                     address0 = new TreeNode(input.substring(offset, offset + 2), offset);
@@ -4210,6 +4578,40 @@ abstract class Grammar {
         return address0;
     }
 
+    TreeNode _read_rev_all() {
+        TreeNode address0 = FAILURE;
+        int index0 = offset;
+        Map<Integer, CacheRecord> rule = cache.get(Label.rev_all);
+        if (rule == null) {
+            rule = new HashMap<Integer, CacheRecord>();
+            cache.put(Label.rev_all, rule);
+        }
+        if (rule.containsKey(offset)) {
+            address0 = rule.get(offset).node;
+            offset = rule.get(offset).tail;
+        } else {
+            String chunk0 = null;
+            if (offset < inputSize) {
+                chunk0 = input.substring(offset, offset + 7);
+            }
+            if (chunk0 != null && chunk0.toLowerCase().equals("rev_all".toLowerCase())) {
+                address0 = new TreeNode(input.substring(offset, offset + 7), offset);
+                offset = offset + 7;
+            } else {
+                address0 = FAILURE;
+                if (offset > failure) {
+                    failure = offset;
+                    expected = new ArrayList<String>();
+                }
+                if (offset == failure) {
+                    expected.add("`rev_all`");
+                }
+            }
+            rule.put(index0, new CacheRecord(address0, offset));
+        }
+        return address0;
+    }
+
     TreeNode _read_ws() {
         TreeNode address0 = FAILURE;
         int index0 = offset;
@@ -4224,7 +4626,7 @@ abstract class Grammar {
         } else {
             String chunk0 = null;
             if (offset < inputSize) {
-                chunk0 = input.substring(offset, Math.min(offset + 1, input.length()));
+                chunk0 = input.substring(offset, offset + 1);
             }
             if (chunk0 != null && REGEX_13.matcher(chunk0).matches()) {
                 address0 = new TreeNode(input.substring(offset, offset + 1), offset);

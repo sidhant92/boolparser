@@ -24,6 +24,7 @@ public class OperatorFactory {
         operatorMap.put(Operator.LESS_THAN, new LessThanOperator());
         operatorMap.put(Operator.LESS_THAN_EQUAL, new LessThanEqualOperator());
         operatorMap.put(Operator.NOT_EQUAL, new NotEqualsOperator());
+        operatorMap.put(Operator.REVERSE_MATCH_ALL, new ReverseMatchAllOperator());
     }
 
     public static AbstractOperator getOperator(final Operator operator) {

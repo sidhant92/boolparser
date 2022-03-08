@@ -12,4 +12,6 @@ public interface Actions {
     TreeNode make_primary(String input, int start, int end, List<TreeNode> elements);
     TreeNode make_string_list(String input, int start, int end, List<TreeNode> elements);
     TreeNode make_string_token(String input, int start, int end, List<TreeNode> elements);
+    TreeNode make_rev_all_decimal_list(String input, int start, int end, List<TreeNode> elements);
+    TreeNode make_rev_all_string_list(String input, int start, int end, List<TreeNode> elements);
 }

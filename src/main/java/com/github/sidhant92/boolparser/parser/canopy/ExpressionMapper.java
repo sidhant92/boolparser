@@ -4,10 +4,14 @@ import com.github.sidhant92.boolparser.constant.LogicalOperationType;
 import com.github.sidhant92.boolparser.constant.Operator;
 import com.github.sidhant92.boolparser.domain.BoolExpression;
 import com.github.sidhant92.boolparser.domain.Node;
+import com.github.sidhant92.boolparser.domain.NumericRangeToken;
+import com.github.sidhant92.boolparser.domain.NumericToken;
+import com.github.sidhant92.boolparser.domain.ReverseAllMatchToken;
 import com.github.sidhant92.boolparser.domain.StringToken;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericRangeNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.BooleanNode;
+import com.github.sidhant92.boolparser.parser.canopy.domain.ReverseAllMatchNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.StringNode;
 
 /**
@@ -48,6 +52,9 @@ public class ExpressionMapper {
         } else if (treeNode instanceof NumericRangeNode) {
             final NumericRangeNode numericRangeNode = (NumericRangeNode) treeNode;
             return mapToNumericRangeToken(numericRangeNode);
+        } else if (treeNode instanceof ReverseAllMatchNode) {
+            final ReverseAllMatchNode reverseAllMatchNode = (ReverseAllMatchNode) treeNode;
+            return mapToReverseAllMatchToken(reverseAllMatchNode);
         } else {
             return processBooleanExpression((BooleanNode) treeNode);
         }
@@ -57,16 +64,20 @@ public class ExpressionMapper {
         return new StringToken(stringNode.getField(), stringNode.getValue());
     }
 
-    private com.github.sidhant92.boolparser.domain.NumericToken mapToNumericToken(final NumericNode token) {
-        return com.github.sidhant92.boolparser.domain.NumericToken.builder().field(token.getField()).value(token.getValue())
+    private NumericToken mapToNumericToken(final NumericNode token) {
+        return NumericToken.builder().field(token.getField()).value(token.getValue())
                                                                   .dataType(token.getDataType())
                                                                   .operator(Operator.getOperatorFromSymbol(token.getOperator()).orElse(null)).build();
     }
 
-    private com.github.sidhant92.boolparser.domain.NumericRangeToken mapToNumericRangeToken(final NumericRangeNode token) {
-        return com.github.sidhant92.boolparser.domain.NumericRangeToken.builder().field(token.getField()).fromValue(token.getFromValue())
+    private NumericRangeToken mapToNumericRangeToken(final NumericRangeNode token) {
+        return NumericRangeToken.builder().field(token.getField()).fromValue(token.getFromValue())
                                                                        .fromDataType(token.getFromDataType()).toValue(token.getToValue())
                                                                        .toDataType(token.getToDataType()).build();
+    }
+
+    private ReverseAllMatchToken mapToReverseAllMatchToken(final ReverseAllMatchNode token) {
+        return ReverseAllMatchToken.builder().dataType(token.getDataType()).field(token.getField()).values(token.getValues()).build();
     }
 
     Node getFilterQuery(final BooleanNode booleanNode) {

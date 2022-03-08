@@ -3,4 +3,4 @@ ossrhPassword=
 signing.keyId=
 signing.password=@
 signing.secretKeyRingFile=
-org.gradle.java.home=
+org.gradle.java.home=/Library/Java/JavaVirtualMachines/jdk-17.0.1.jdk/Contents/Home

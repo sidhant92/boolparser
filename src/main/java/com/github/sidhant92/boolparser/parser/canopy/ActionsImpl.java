@@ -10,6 +10,7 @@ import com.github.sidhant92.boolparser.constant.LogicalOperationType;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericRangeNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.NumericNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.BooleanNode;
+import com.github.sidhant92.boolparser.parser.canopy.domain.ReverseAllMatchNode;
 import com.github.sidhant92.boolparser.parser.canopy.domain.StringNode;
 
 /**
@@ -75,6 +76,7 @@ public class ActionsImpl implements Actions {
         return checkNotExpression(elements, numericRangeNode);
     }
 
+    @Override
     public TreeNode make_primary(String input, int start, int end, List<TreeNode> elements) {
         return elements.get(1);
     }
@@ -106,6 +108,7 @@ public class ActionsImpl implements Actions {
         }
     }
 
+    @Override
     public TreeNode make_logical_and(String input, int start, int end, List<TreeNode> elements) {
         BooleanNode booleanNode = new BooleanNode();
         if (elements.get(1).iterator().hasNext()) {
@@ -121,6 +124,7 @@ public class ActionsImpl implements Actions {
         }
     }
 
+    @Override
     public TreeNode make_logical_or(String input, int start, int end, List<TreeNode> elements) {
         BooleanNode booleanNode = new BooleanNode();
         if (elements.get(0) instanceof BooleanNode) {
@@ -145,6 +149,7 @@ public class ActionsImpl implements Actions {
         }
     }
 
+    @Override
     public TreeNode make_decimal_list(String input, int start, int end, List<TreeNode> elements) {
         final BooleanNode booleanNode = new BooleanNode();
         final List<String> list = Arrays.stream(elements.get(7).text.split(",")).map(String::trim).collect(Collectors.toList());
@@ -188,6 +193,7 @@ public class ActionsImpl implements Actions {
         }
     }
 
+    @Override
     public TreeNode make_string_list(String input, int start, int end, List<TreeNode> elements) {
         final BooleanNode booleanNode = new BooleanNode();
         final List<String> list = getAllAlphanumericTokens(elements.get(7));
@@ -201,5 +207,21 @@ public class ActionsImpl implements Actions {
         Optional.ofNullable(treeNode.labelled.get(Label.alphanumeric)).ifPresent(node -> tokens.add(getCapturedString(node.text)));
         treeNode.elements.forEach(node -> tokens.addAll(getAllAlphanumericTokens(node)));
         return tokens;
+    }
+
+    @Override
+    public TreeNode make_rev_all_decimal_list(String input, int start, int end, List<TreeNode> elements) {
+        final List<String> list = Arrays.stream(elements.get(7).text.split(",")).map(String::trim).collect(Collectors.toList());
+        final DataType dataType = findNumericDataTypeForList(list);
+        final List<Object> data = list.stream().map(d -> getValue(d, dataType)).collect(Collectors.toList());
+        final ReverseAllMatchNode node = new ReverseAllMatchNode(elements.get(2).text, data, dataType);
+        return checkNotExpression(elements, node);
+    }
+
+    @Override
+    public TreeNode make_rev_all_string_list(String input, int start, int end, List<TreeNode> elements) {
+        final List<String> list = getAllAlphanumericTokens(elements.get(7));
+        final ReverseAllMatchNode node = new ReverseAllMatchNode(elements.get(2).text, Arrays.asList(list.toArray()), DataType.STRING);
+        return checkNotExpression(elements, node);
     }
 }

@@ -190,26 +190,44 @@ class TreeNode19 extends TreeNode {
 class TreeNode20 extends TreeNode {
     TreeNode20(String text, int offset, List<TreeNode> elements) {
         super(text, offset, elements);
-        labelled.put(Label.decimal, elements.get(1));
+        labelled.put(Label.alphanumeric, elements.get(2));
+        labelled.put(Label.rev_all, elements.get(4));
+        labelled.put(Label.number_list, elements.get(7));
     }
 }
 
 class TreeNode21 extends TreeNode {
     TreeNode21(String text, int offset, List<TreeNode> elements) {
         super(text, offset, elements);
-        labelled.put(Label.decimal, elements.get(2));
+        labelled.put(Label.alphanumeric, elements.get(2));
+        labelled.put(Label.rev_all, elements.get(4));
+        labelled.put(Label.string_list, elements.get(7));
     }
 }
 
 class TreeNode22 extends TreeNode {
     TreeNode22(String text, int offset, List<TreeNode> elements) {
         super(text, offset, elements);
-        labelled.put(Label.alphanumeric, elements.get(1));
+        labelled.put(Label.decimal, elements.get(1));
     }
 }
 
 class TreeNode23 extends TreeNode {
     TreeNode23(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.decimal, elements.get(2));
+    }
+}
+
+class TreeNode24 extends TreeNode {
+    TreeNode24(String text, int offset, List<TreeNode> elements) {
+        super(text, offset, elements);
+        labelled.put(Label.alphanumeric, elements.get(1));
+    }
+}
+
+class TreeNode25 extends TreeNode {
+    TreeNode25(String text, int offset, List<TreeNode> elements) {
         super(text, offset, elements);
         labelled.put(Label.alphanumeric, elements.get(2));
     }

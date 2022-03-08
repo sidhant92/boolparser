@@ -2,7 +2,9 @@ package com.github.sidhant92.boolparser.application;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,26 @@ import org.junit.jupiter.api.Test;
  * @since 29/07/2020
  */
 public class BooleanExpressionEvaluatorTest {
+    @Test
+    public void testReverseAllMatchCorrectExpression() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("age", List.of(1, 2));
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("age rev_all (1,2,4)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertTrue(booleanOptional.get());
+    }
+
+    @Test
+    public void testReverseAllMatchInCorrectExpression() {
+        final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
+        final Map<String, Object> data = new HashMap<>();
+        data.put("age", List.of(1, 2));
+        final Optional<Boolean> booleanOptional = booleanExpressionEvaluator.evaluate("age rev_all (1,3,4)", data);
+        assertTrue(booleanOptional.isPresent());
+        assertFalse(booleanOptional.get());
+    }
+
     @Test
     public void testSimpleTrueCorrectExpression() {
         final BooleanExpressionEvaluator booleanExpressionEvaluator = new BooleanExpressionEvaluator();
