@@ -40,4 +40,8 @@ public abstract class AbstractDataType<T extends Comparable<? super T>> {
     public abstract boolean isValid(final Object value);
 
     public abstract Optional<T> getValue(final Object value);
+
+    public Class<T> getClassType() {
+        return clazz;
+    }
 }

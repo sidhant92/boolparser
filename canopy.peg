@@ -1,0 +1,35 @@
+grammar Filters
+  start <- logical_or
+  logical_or <- logical_and (ws+ or ws+ logical_and)* %make_logical_or
+  logical_and <- primary (ws+ and ws+ primary)* %make_logical_and
+  primary <- token / "(" logical_or ")" %make_primary
+  token <- "NOT"? ws* alphanumeric ws* "=" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* ">" ws* app_version %make_app_version_token
+  / "NOT"? ws* alphanumeric ws* ">=" ws* app_version %make_app_version_token
+  / "NOT"? ws* alphanumeric ws* "<" ws* app_version %make_app_version_token
+  / "NOT"? ws* alphanumeric ws* "<=" ws* app_version %make_app_version_token
+  / "NOT"? ws* alphanumeric ws* ">" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* ">=" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* "<" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* "<=" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* "!=" ws* decimal %make_numeric_token
+  / "NOT"? ws* alphanumeric ws* ":" ws* decimal ws* ("TO" / "to") ws* decimal %make_numeric_range_token
+  / "NOT"? ws* alphanumeric ws* ":" ws* alphanumeric %make_string_token
+  / "NOT"? ws* alphanumeric ws* in ws* "(" number_list ")" %make_decimal_list
+  / "NOT"? ws* alphanumeric ws* in ws* "(" string_list ")" %make_string_list
+  / "NOT"? ws* alphanumeric ws* rev_all ws* "(" number_list ")" %make_rev_all_decimal_list
+  / "NOT"? ws* alphanumeric ws* rev_all ws* "(" string_list ")" %make_rev_all_string_list
+  number_list <- ws* decimal ws* number_list_token*
+  number_list_token <- "," ws* decimal ws*
+  string_list <- ws* alphanumeric ws* string_list_token*
+  string_list_token <- "," ws* alphanumeric ws*
+  app_version <- [0-9]+ "." [0-9]+ app_version_token+
+  app_version_token <- "." [0-9]+
+  alphanumeric <- [^ \t'"<>=:(),]+ / ["]+ [^"]+ ["]+ / [']+ [^']+ [']+
+  decimal <- [0-9]+ "."? [0-9]*
+  or <- ("OR" / "or" / "|" / "||")
+  and <- ("AND" / "and" / "&" / "&&")
+  operator <- ("=" / ">" / ">=" / "<" / "<=" / "!=")
+  in <- ("IN" / "in")
+  rev_all <- (`rev_all`)
+  ws <- [ \t]

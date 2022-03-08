@@ -9,6 +9,7 @@ import com.github.sidhant92.boolparser.domain.BoolExpression;
 import com.github.sidhant92.boolparser.domain.Node;
 import com.github.sidhant92.boolparser.domain.NumericRangeToken;
 import com.github.sidhant92.boolparser.domain.NumericToken;
+import com.github.sidhant92.boolparser.domain.ReverseAllMatchToken;
 import com.github.sidhant92.boolparser.domain.StringToken;
 import com.github.sidhant92.boolparser.operator.OperatorService;
 import com.github.sidhant92.boolparser.parser.BoolExpressionParser;
@@ -45,6 +46,8 @@ public class BooleanExpressionEvaluator {
                 return evaluateNumericRangeToken((NumericRangeToken) node, data);
             case BOOL_EXPRESSION:
                 return evaluateBooleanNode((BoolExpression) node, data);
+            case REVERSE_ALL_MATCH_TOKEN:
+                return evaluateReverseAllMatchToken((ReverseAllMatchToken) node, data);
             default:
                 return false;
         }
@@ -77,6 +80,15 @@ public class BooleanExpressionEvaluator {
                 .evaluate(Operator.LESS_THAN_EQUAL, ContainerDataType.primitive, numericRangeToken.getToDataType(), fieldData,
                         numericRangeToken.getToValue());
     }
+
+    private boolean evaluateReverseAllMatchToken(final ReverseAllMatchToken token, final Map<String, Object> data) {
+        if (checkFieldDataMissing(token.getField(), data)) {
+            return false;
+        }
+        final Object fieldData = data.get(token.getField());
+        return operatorService.evaluate(Operator.REVERSE_MATCH_ALL, ContainerDataType.set, token.getDataType(), fieldData, token.getValues());
+    }
+
 
     private boolean evaluateBooleanNode(final BoolExpression boolExpression, final Map<String, Object> data) {
         return (boolExpression.getOrOperations().stream().anyMatch(orOperation -> evaluateNode(orOperation, data)) || boolExpression.getOrOperations()

@@ -2,14 +2,17 @@ package com.github.sidhant92.boolparser.parser.canopy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
+import com.github.sidhant92.boolparser.constant.DataType;
 import com.github.sidhant92.boolparser.constant.NodeType;
 import com.github.sidhant92.boolparser.constant.Operator;
 import com.github.sidhant92.boolparser.domain.BoolExpression;
 import com.github.sidhant92.boolparser.domain.Node;
 import com.github.sidhant92.boolparser.domain.NumericRangeToken;
 import com.github.sidhant92.boolparser.domain.NumericToken;
+import com.github.sidhant92.boolparser.domain.ReverseAllMatchToken;
 import com.github.sidhant92.boolparser.domain.StringToken;
 
 /**
@@ -271,6 +274,22 @@ public class PEGBoolExpressionParserTest {
         verifyStringToken((StringToken) boolExpression.getOrOperations().get(2), "name", "ab\"c");
     }
 
+    @Test
+    public void testReverseAllMatchIntegerList() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("age rev_all (1, 2)");
+        assertTrue(nodeOptional.isPresent());
+        verifyReverseAllMatchToken((ReverseAllMatchToken) nodeOptional.get(), "age", List.of(1, 2), DataType.INTEGER);
+    }
+
+    @Test
+    public void testReverseAllMatchStringList() {
+        final PEGBoolExpressionParser boolExpressionParser = new PEGBoolExpressionParser();
+        final Optional<Node> nodeOptional = boolExpressionParser.parseExpression("name rev_all (a, bc)");
+        assertTrue(nodeOptional.isPresent());
+        verifyReverseAllMatchToken((ReverseAllMatchToken) nodeOptional.get(), "name", List.of("a", "bc"), DataType.STRING);
+    }
+
     private void verifyStringToken(final StringToken stringToken, final String field, final String value) {
         assertEquals(stringToken.getNodeType().name(), NodeType.STRING_TOKEN.name());
         assertEquals(stringToken.getField(), field);
@@ -290,5 +309,12 @@ public class PEGBoolExpressionParserTest {
         assertEquals(numericRangeToken.getField(), field);
         assertEquals(numericRangeToken.getFromValue(), fromValue);
         assertEquals(numericRangeToken.getToValue(), toValue);
+    }
+
+    private void verifyReverseAllMatchToken(final ReverseAllMatchToken reverseAllMatchToken, final String field, final List<Object> values,
+                                            final DataType dataType) {
+        assertEquals(reverseAllMatchToken.getField(), field);
+        assertEquals(reverseAllMatchToken.getDataType(), dataType);
+        assertEquals(reverseAllMatchToken.getValues(), values);
     }
 }

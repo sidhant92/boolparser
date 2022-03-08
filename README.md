@@ -172,3 +172,15 @@ assertTrue(booleanOptional.get());
 The return type is `Optional<Boolean>`. If its absent which means parsing has failed and any fallback can be used.
 
 [For a complete list of examples please check out the test file](src/test/java/com/github/sidhant92/boolparser/application/BooleanExpressionEvaluatorTest.java)
+
+### Contribution
+We use [Canopy](http://canopy.jcoglan.com/) which is a PEG parser compiler. You can make changes to the grammar and generate the code using the following steps. It will be better if you read its documentation first.
+1. install canopy using `npm install -g canopy`.
+   1. you might need to fix the canopy(0.3.0) file(in the node_modules) depending on the node version. try following the next steps and if it throws some error related to `mkdirp` put the write function in(or around) line 32  in the `then` part of the promise.
+2. copy `canopy.peg` file to `$APP_HOME/src/main/java/com/github/sidhant92/boolparser/parser`.
+3. go to dir `$APP_HOME/src/main/java`
+4. run `canopy com/github/sidhant92/boolparser/parser/canopy.peg --lang java`
+
+#### To run tests
+Make a `gradle.properties` file in `$APP_HOME` and copy the contents of `gradle.properties.sample` file there. 
+Change the java home location as per your OS/java-version. For rest of the fields you can put dummy data.  

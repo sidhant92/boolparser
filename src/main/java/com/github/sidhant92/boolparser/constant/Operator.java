@@ -21,10 +21,10 @@ public enum Operator {
     GREATER_THAN_EQUAL,
     LESS_THAN,
     LESS_THAN_EQUAL,
-    NOT_EQUAL;
+    NOT_EQUAL,
+    REVERSE_MATCH_ALL;
 
     public static Optional<Operator> getOperatorFromSymbol(final String symbol) {
-        final List<AbstractOperator> abc = OperatorFactory.getAllOperators();
         return OperatorFactory.getAllOperators().stream().filter(operator -> operator.getSymbol().equals(symbol)).map(AbstractOperator::getOperator)
                               .findFirst();
     }

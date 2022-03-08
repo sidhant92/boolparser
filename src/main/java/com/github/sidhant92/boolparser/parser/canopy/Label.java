@@ -14,6 +14,7 @@ public enum Label {
     operator,
     or,
     primary,
+    rev_all,
     start,
     string_list,
     string_list_token,
