@@ -1,8 +1,9 @@
-plugins {
-    id 'java'
-    id 'maven'
-    id 'signing'
-}
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+sourceCompatibility = 17
+targetCompatibility = 17
 
 group 'com.github.sidhant92'
 version '1.0.9'
@@ -12,16 +13,17 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
 
-    compile 'ch.qos.logback:logback-classic:1.2.3'
-    compile 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
-    compile 'ch.qos.logback.contrib:logback-jackson:0.1.5'
-    compile 'net.logstash.logback:logstash-logback-encoder:5.2'
-    compile 'org.apache.maven:maven-artifact:3.5.2'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
+    implementation 'ch.qos.logback.contrib:logback-jackson:0.1.5'
+    implementation 'net.logstash.logback:logstash-logback-encoder:5.2'
+    implementation 'org.apache.maven:maven-artifact:3.5.2'
+    implementation 'org.antlr:antlr4-runtime:4.11.1'
 
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.4.2'
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.4.2'
@@ -58,47 +60,4 @@ signing {
     sign configurations.archives
 }
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
-            }
-
-            pom.project {
-                name 'Example Application'
-                packaging 'jar'
-                // optionally artifactId can be defined here
-                description 'A application used as an example on how to set up pushing  its components to the Central Repository.'
-                url 'http://www.example.com/example-application'
-
-                scm {
-                    connection 'scm:svn:http://foo.googlecode.com/svn/trunk/'
-                    developerConnection 'scm:svn:https://foo.googlecode.com/svn/trunk/'
-                    url 'http://foo.googlecode.com/svn/trunk/'
-                }
-
-                licenses {
-                    license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'sidhant92'
-                        name 'Sidhant Aggarwal'
-                        email 'sidhant92@me.com'
-                    }
-                }
-            }
-        }
-    }
-}
+ext.admin = hasProperty('sonatypeUsername')
